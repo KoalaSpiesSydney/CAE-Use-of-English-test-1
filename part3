@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CAE Test – Part 3 Gap Fill</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #222;
+      margin: 0;
+      padding: 20px;
+      padding-bottom: 80px; /* space for nav */
+    }
+
+    .wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    p {
+      line-height: 1.5;
+      margin-bottom: 1em;
+    }
+
+    .instructions {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .example {
+      margin: 10px 0 20px 0;
+      font-weight: bold;
+    }
+
+    .example-box {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 5px;
+    }
+
+    .example-box input {
+      width: 30px;
+      font-size: 18px;
+      text-transform: uppercase;
+      text-align: center;
+      border: 1px solid #ccc;
+      padding: 3px 5px;
+    }
+
+    .gap-input {
+      width: 120px;
+      text-transform: uppercase;
+      padding: 4px;
+      font-size: 1em;
+      border: 1px solid #aaa;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+
+    .gap-label {
+      font-weight: bold;
+    }
+
+    .text-block {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      font-size: 1.05em;
+    }
+
+    .words-list {
+      margin-top: 20px;
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.1);
+      font-weight: bold;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .word-item {
+      background: #e4e4e4;
+      padding: 5px 10px;
+      border-radius: 4px;
+      user-select: none;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #003366;
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    .bottom-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .bottom-nav a:hover {
+      background-color: #0055a5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <h1>CAE Test 3</h1>
+    <h2>Part 3</h2>
+
+    <p class="instructions">
+      For questions <strong>13–16</strong>, read the text below. Use the word given in capitals at the end of some lines to form a word that fits the gap in the same line. There is an example at the beginning (0).
+    </p>
+
+    <p class="instructions" style="font-weight:normal;">
+      Write your answers <strong>IN CAPITAL LETTERS</strong> on the separate answer sheet.
+    </p>
+
+    <div class="example">
+      Example: 0
+      <div class="example-box">
+        <input type="text" maxlength="1" value="A" readonly />
+        <input type="text" maxlength="1" value="D" readonly />
+        <input type="text" maxlength="1" value="A" readonly />
+        <input type="text" maxlength="1" value="P" readonly />
+        <input type="text" maxlength="1" value="T" readonly />
+        <input type="text" maxlength="1" value="A" readonly />
+        <input type="text" maxlength="1" value="B" readonly />
+        <input type="text" maxlength="1" value="L" readonly />
+        <input type="text" maxlength="1" value="E" readonly />
+        <input type="text" maxlength="1" />
+        <input type="text" maxlength="1" />
+        <input type="text" maxlength="1" />
+        <input type="text" maxlength="1" />
+      </div>
+    </div>
+
+    <div class="text-block">
+      <p>
+        Hair is the most easily (0) <strong>ADAPTABLE</strong> part of the human body and also one of the most (13) 
+        <input type="text" class="gap-input" id="gap9" maxlength="15" aria-label="Answer gap 9" />. The first barbers appeared in ancient Greece, when short hair became a sign of social status. Similarly, South American Inca chiefs had their hair short; in contrast, the hair of their citizens got (14) 
+        <input type="text" class="gap-input" id="gap10" maxlength="15" aria-label="Answer gap 10" /> longer the further down the social chain they were. Barbers prospered in the days of the Roman Empire, until they were expelled from Rome, when it was discovered how much they earned.
+      </p>
+
+      <p>
+        Women have always reflected fashion through their hairstyles, sometimes quite (15) 
+        <input type="text" class="gap-input" id="gap11" maxlength="15" aria-label="Answer gap 11" />. In 15th-century Europe, women would pluck the hair from the front of their heads in (16) 
+        <input type="text" class="gap-input" id="gap12" maxlength="15" aria-label="Answer gap 12" /> of beauty. 
+      </p>
+    </div>
+
+    <div class="words-list">
+      <div class="word-item">ADAPT</div>
+      <div class="word-item">DISTINCT</div>
+      <div class="word-item">PROGRESS</div>
+      <div class="word-item">DRAMA</div>
+      <div class="word-item">PURSUUE</div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="bottom-nav">
+    <a href="homepageUofEIndex.html">Home</a>
+    <a href="1testindex.html">Part 1</a>
+    <a href="4testindex.html">Part 2</a>
+    <a href="p2testindex.html">Part 3</a>
+    <a href="3testindex.html">Part 4</a>
+  </nav>
+
+</body>
+</html>
+
