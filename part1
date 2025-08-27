@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test 3 – Reading and Use of English</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.4em;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    select {
+      margin: 0 4px;
+      padding: 3px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>CAE – READING AND USE OF ENGLISH (1 hour 10 minutes – slightly shortened)</h1>
+</header>
+
+<div class="container">
+  <h2>Part 1</h2>
+  <p><strong>For questions 1–8</strong>, read the text below and decide which answer (A, B, C or D) best fits each gap. There is an example at the beginning (0).</p>
+  <p><em>Mark your answers on the separate answer sheet.</em></p>
+
+  <p><strong>Example:</strong><br>0 A aspect  B part  C element  D factor</p>
+
+  <h3>Reality Television</h3>
+
+  <p>
+    Reality television has become a big (0) <strong>part</strong> of modern entertainment, attracting viewers all over the world.
+    These shows often feature normal people in unusual situations, creating drama and excitement that audiences find 1.
+    <select id="q1">
+      <option value="">--Choose--</option>
+      <option value="A">A nearly</option>
+      <option value="B">B similarly</option>
+      <option value="C">C accurately</option>
+      <option value="D">D particularly</option>
+    </select> interesting.
+  </p>
+
+  <p>
+    The genre has grown over the years, with formats ranging from talent competitions to survival challenges, and it has 2.
+    <select id="q2">
+      <option value="">--Choose--</option>
+      <option value="A">A risen</option>
+      <option value="B">B depreciated</option>
+      <option value="C">C levelled</option>
+      <option value="D">D significant</option>
+    </select> in popularity because of its surprises and relatable stories.
+  </p>
+
+  <p>
+    Some people think reality TV can sometimes encourage 3.
+    <select id="q3">
+      <option value="">--Choose--</option>
+      <option value="A">A funny</option>
+      <option value="B">B unusual</option>
+      <option value="C">C risky</option>
+      <option value="D">D safety</option>
+    </select> behavior, as participants are often 4.
+    <select id="q4">
+      <option value="">--Choose--</option>
+      <option value="A">A assumed</option>
+      <option value="B">B encouraged</option>
+      <option value="C">C exposed</option>
+      <option value="D">D disclosed</option>
+    </select> to act in ways that create arguments or problems.
+  </p>
+
+  <p>
+    However, others say it gives people a chance to express themselves and can even be a 5.
+    <select id="q5">
+      <option value="">--Choose--</option>
+      <option value="A">A deterrent</option>
+      <option value="B">B prompt</option>
+      <option value="C">C catalyst</option>
+      <option value="D">D obstacle</option>
+    </select> for positive change.
+  </p>
+
+  <p>
+    Reality television has also 6.
+    <select id="q6">
+      <option value="">--Choose--</option>
+      <option value="A">A provided</option>
+      <option value="B">B prevented</option>
+      <option value="C">C give</option>
+      <option value="D">D arisen</option>
+    </select> new chances for people to become famous, with many contestants achieving success.
+  </p>
+
+  <p>
+    Despite its critics, reality TV shows continue to 7.
+    <select id="q7">
+      <option value="">--Choose--</option>
+      <option value="A">A dismay</option>
+      <option value="B">B engage</option>
+      <option value="C">C divide</option>
+      <option value="D">D delighting</option>
+    </select> audiences and dominate TV schedules, proving that the genre is here to stay as a 8.
+    <select id="q8">
+      <option value="">--Choose--</option>
+      <option value="A">A defensive</option>
+      <option value="B">B unpopular</option>
+      <option value="C">C integral</option>
+      <option value="D">D insignificant</option>
+    </select> part of popular culture.
+  </p>
+
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="bottom-nav">
+  <a href="homepageUofEIndex.html">Home</a>
+  <a href="1testindex.html">Part 1</a>
+  <a href="4testindex.html">Part 2</a>
+  <a href="p2testindex.html">Part 3</a>
+  <a href="3testindex.html">Part 4</a>
+</nav>
+
+<style>
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #003366;
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  .bottom-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .bottom-nav a:hover {
+    background-color: #0055a5;
+  }
+
+  body {
+    padding-bottom: 60px; /* Prevent content from hiding behind nav */
+  }
+</style>
+
+</body>
+</html>
