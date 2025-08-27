@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Test 3 – Reading and Use of English: Part 2</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.4em;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+    }
+    p {
+      line-height: 1.6;
+    }
+    input[type="text"] {
+      width: 100px;
+      padding: 4px 6px;
+      margin: 0 5px;
+      font-size: 1em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>CAE– READING AND USE OF ENGLISH –</h1>
+  <p></p>
+</header>
+
+<div class="container">
+  <h2>Part 2</h2>
+  <p><strong>For questions 9–12</strong>, read the text below and think of the word which best fits each gap. Use <strong>only one word</strong> in each gap.</p>
+  <p><em>Write your answers IN CAPITAL LETTERS on the separate answer sheet.</em></p>
+
+  <h3>Social Media and Children</h3>
+
+  <p>
+    Social media exposes children <strong>(0)</strong> to rapid communication, peer influence, and curated content that can shape their self-image and behavior. 
+    While it offers opportunities 9.
+    <input type="text" id="q9" maxlength="20" /> 
+    creativity and connection, it also introduces risks 10.
+    <input type="text" id="q10" maxlength="20" /> 
+    cyberbullying, privacy breaches, and addictive usage patterns. 
+    Parents and educators protect children 11.
+    <input type="text" id="q11" maxlength="20" /> 
+    the dangers of the internet while at the same time allowing them 12.
+    <input type="text" id="q12" maxlength="20" /> 
+    take advantage of new technology.
+  </p>
+
+  <p style="margin-top: 20px;"><strong>Hint:</strong> for, as, from, to, of etc</p>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="bottom-nav">
+  <a href="homepageUofEIndex.html">Home</a>
+  <a href="1testindex.html">Part 1</a>
+  <a href="4testindex.html">Part 2</a>
+  <a href="p2testindex.html">Part 3</a>
+  <a href="3testindex.html">Part 4</a>
+</nav>
+
+<style>
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #003366;
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  .bottom-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .bottom-nav a:hover {
+    background-color: #0055a5;
+  }
+
+  body {
+    padding-bottom: 60px; /* Prevent content from hiding behind nav */
+  }
+</style>
+
+</body>
+</html>
+
