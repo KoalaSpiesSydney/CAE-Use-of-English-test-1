@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CAE Test – Part 4 Sentence Transformations</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #222;
+      padding: 20px;
+      padding-bottom: 80px; /* make room for fixed nav */
+      margin: 0;
+    }
+
+    .wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    p {
+      line-height: 1.5;
+      margin-bottom: 1em;
+    }
+
+    .instructions {
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .question-block {
+      margin-bottom: 20px;
+      background: white;
+      padding: 15px 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .question-number {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .sentence {
+      margin: 6px 0;
+    }
+
+    .word-given {
+      font-weight: bold;
+      color: #0066cc;
+      margin-top: 6px;
+    }
+
+    .answer-input {
+      width: 100%;
+      padding: 6px 10px;
+      font-size: 1em;
+      margin-top: 6px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      text-transform: lowercase;
+    }
+
+    .example {
+      background: #e9f1ff;
+      border-left: 5px solid #3399ff;
+      padding: 10px 15px;
+      margin-bottom: 25px;
+      border-radius: 4px;
+    }
+
+    .example .answer-input {
+      text-transform: none;
+      font-weight: bold;
+      color: #0055aa;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #003366;
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    .bottom-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .bottom-nav a:hover {
+      background-color: #0055a5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <h1>CAE Use of English</h1>
+    <h2>Part 4</h2>
+
+    <p class="instructions">
+      For questions <strong>17–20</strong>, complete the second sentence so that it has a similar meaning to the first sentence,
+      using the word given. Do not change the word given. You must use between three and six words, including the word given.
+    </p>
+
+    <div class="example question-block">
+      <div class="question-number">Example: 0</div>
+      <div class="sentence">
+        James would only speak to the head of department alone.
+      </div>
+      <div class="sentence">
+        <strong>ON</strong><br />
+        James insisted <input type="text" class="answer-input" value="on speaking" readonly /> to the head of department alone.
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-number">17</div>
+      <div class="sentence">
+        It is possible that the meeting will be postponed.
+      </div>
+      <div class="sentence">
+        <span class="word-given">MAY</span><br />
+        The meeting <input type="text" class="answer-input" placeholder="Your answer here" /> postponed.
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-number">18</div>
+      <div class="sentence">
+        “You should try the new Italian restaurant in town,” she said.
+      </div>
+      <div class="sentence">
+        <span class="word-given">RECOMMENDED</span><br />
+        She <input type="text" class="answer-input" placeholder="Your answer here" /> the new Italian restaurant in town.
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-number">19</div>
+      <div class="sentence">
+        “If you want to improve, you should practise every day,” the coach said.
+      </div>
+      <div class="sentence">
+        <span class="word-given">ADVISED</span><br />
+        The coach <input type="text" class="answer-input" placeholder="Your answer here" /> every day to improve.
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-number">20</div>
+      <div class="sentence">
+        “The order arrived late,” the client said.
+      </div>
+      <div class="sentence">
+        <span class="word-given">COMPLAINED</span><br />
+        The client <input type="text" class="answer-input" placeholder="Your answer here" /> arriving late.
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="bottom-nav">
+    <a href="homepageUofEIndex.html">Home</a>
+    <a href="1testindex.html">Part 1</a>
+    <a href="4testindex.html">Part 2</a>
+    <a href="p2testindex.html">Part 3</a>
+    <a href="3testindex.html">Part 4</a>
+  </nav>
+
+</body>
+</html>
+
