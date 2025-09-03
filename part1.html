@@ -42,6 +42,36 @@
       margin: 0 4px;
       padding: 3px;
     }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #003366;
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    .bottom-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .bottom-nav a:hover {
+      background-color: #0055a5;
+    }
+
+    body {
+      padding-bottom: 60px; /* Prevent content from hiding behind nav */
+    }
   </style>
 </head>
 <body>
@@ -130,7 +160,7 @@
       <option value="B">B engage</option>
       <option value="C">C divide</option>
       <option value="D">D delighting</option>
-    </select> audiences and dominate TV schedules, proving that the genre is here to stay as a 8.
+    </select> audiences and dominate TV schedules, proving that the genre is here to stay as an 8.
     <select id="q8">
       <option value="">--Choose--</option>
       <option value="A">A defensive</option>
@@ -140,7 +170,17 @@
     </select> part of popular culture.
   </p>
 
+  <!-- Submit button -->
+  <div style="margin-top:20px;">
+    <button onclick="checkAnswers()" style="padding:10px 20px; font-size:1em; background:#003366; color:white; border:none; border-radius:4px; cursor:pointer;">
+      Submit Answers
+    </button>
+  </div>
+
+  <!-- Results box -->
+  <div id="results" style="margin-top:30px; padding:15px; border:1px solid #ccc; background:#f9f9f9;"></div>
 </div>
+
 <!-- Bottom Navigation Bar -->
 <nav class="bottom-nav">
   <a href="index.html">Home</a>
@@ -150,37 +190,46 @@
   <a href="part4.html">Part 4</a>
 </nav>
 
-<style>
-  .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #003366;
-    display: flex;
-    justify-content: space-around;
-    padding: 12px 0;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
+<script>
+  // Correct answers key
+  const answers = {
+    q1: "D",
+    q2: "A",
+    q3: "C",
+    q4: "B",
+    q5: "C",
+    q6: "A",
+    q7: "B",
+    q8: "C"
+  };
 
-  .bottom-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1em;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
+  function checkAnswers() {
+    let score = 0;
+    let total = Object.keys(answers).length;
+    let resultHTML = "<h3>Results</h3><ul>";
 
-  .bottom-nav a:hover {
-    background-color: #0055a5;
-  }
+    for (let q in answers) {
+      const selectEl = document.getElementById(q);
+      const selected = selectEl.value;
+      const correct = answers[q];
 
-  body {
-    padding-bottom: 60px; /* Prevent content from hiding behind nav */
+      if (selected === correct) {
+        score++;
+        selectEl.style.backgroundColor = "#c8e6c9"; // green
+        resultHTML += `<li>Question ${q.slice(1)} ✅ Correct</li>`;
+      } else {
+        selectEl.style.backgroundColor = "#ffcdd2"; // red
+        resultHTML += `<li>Question ${q.slice(1)} ❌ Incorrect. Correct answer: <strong>${correct}</strong></li>`;
+      }
+    }
+
+    resultHTML += "</ul>";
+    resultHTML += `<p><strong>Your total score: ${score} / ${total}</strong></p>`;
+
+    document.getElementById("results").innerHTML = resultHTML;
   }
-</style>
+</script>
 
 </body>
 </html>
+
