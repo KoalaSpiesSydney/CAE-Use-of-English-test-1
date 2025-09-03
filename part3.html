@@ -63,10 +63,6 @@
       vertical-align: middle;
     }
 
-    .gap-label {
-      font-weight: bold;
-    }
-
     .text-block {
       background: white;
       padding: 20px;
@@ -149,24 +145,20 @@
         <input type="text" maxlength="1" value="B" readonly />
         <input type="text" maxlength="1" value="L" readonly />
         <input type="text" maxlength="1" value="E" readonly />
-        <input type="text" maxlength="1" />
-        <input type="text" maxlength="1" />
-        <input type="text" maxlength="1" />
-        <input type="text" maxlength="1" />
       </div>
     </div>
 
     <div class="text-block">
       <p>
         Hair is the most easily (0) <strong>ADAPTABLE</strong> part of the human body and also one of the most (13) 
-        <input type="text" class="gap-input" id="gap9" maxlength="15" aria-label="Answer gap 9" />. The first barbers appeared in ancient Greece, when short hair became a sign of social status. Similarly, South American Inca chiefs had their hair short; in contrast, the hair of their citizens got (14) 
-        <input type="text" class="gap-input" id="gap10" maxlength="15" aria-label="Answer gap 10" /> longer the further down the social chain they were. Barbers prospered in the days of the Roman Empire, until they were expelled from Rome, when it was discovered how much they earned.
+        <input type="text" class="gap-input" id="gap13" maxlength="15" aria-label="Answer gap 13" />. The first barbers appeared in ancient Greece, when short hair became a sign of social status. Similarly, South American Inca chiefs had their hair short; in contrast, the hair of their citizens got (14) 
+        <input type="text" class="gap-input" id="gap14" maxlength="15" aria-label="Answer gap 14" /> longer the further down the social chain they were. Barbers prospered in the days of the Roman Empire, until they were expelled from Rome, when it was discovered how much they earned.
       </p>
 
       <p>
         Women have always reflected fashion through their hairstyles, sometimes quite (15) 
-        <input type="text" class="gap-input" id="gap11" maxlength="15" aria-label="Answer gap 11" />. In 15th-century Europe, women would pluck the hair from the front of their heads in (16) 
-        <input type="text" class="gap-input" id="gap12" maxlength="15" aria-label="Answer gap 12" /> of beauty. 
+        <input type="text" class="gap-input" id="gap15" maxlength="15" aria-label="Answer gap 15" />. In 15th-century Europe, women would pluck the hair from the front of their heads in (16) 
+        <input type="text" class="gap-input" id="gap16" maxlength="15" aria-label="Answer gap 16" /> of beauty. 
       </p>
     </div>
 
@@ -175,8 +167,18 @@
       <div class="word-item">DISTINCT</div>
       <div class="word-item">PROGRESS</div>
       <div class="word-item">DRAMA</div>
-      <div class="word-item">PURSUUE</div>
+      <div class="word-item">PURSUE</div>
     </div>
+
+    <!-- Submit button -->
+    <div style="margin:20px 0;">
+      <button onclick="checkAnswersPart3()" style="padding:10px 20px; font-size:1em; background:#003366; color:white; border:none; border-radius:4px; cursor:pointer;">
+        Submit Answers
+      </button>
+    </div>
+
+    <!-- Results box -->
+    <div id="results" style="margin-top:30px; padding:15px; border:1px solid #ccc; background:#f9f9f9;"></div>
   </div>
 
   <!-- Bottom Navigation Bar -->
@@ -188,6 +190,41 @@
     <a href="part4.html">Part 4</a>
   </nav>
 
+<script>
+  // Correct answers + explanations
+  const answersPart3 = {
+    gap13: { word: "DISTINCTIVE", explanation: "From DISTINCT → ‘one of the most distinctive’ = easily recognisable." },
+    gap14: { word: "PROGRESSIVELY", explanation: "From PROGRESS → ‘progressively longer’ = gradually, step by step." },
+    gap15: { word: "DRAMATICALLY", explanation: "From DRAMA → ‘sometimes quite dramatically’ = to a great extent." },
+    gap16: { word: "PURSUIT", explanation: "From PURSUE → ‘in pursuit of beauty’ is the fixed phrase." }
+  };
+
+  function checkAnswersPart3() {
+    let score = 0;
+    let total = Object.keys(answersPart3).length;
+    let resultHTML = "<h3>Results</h3><ul>";
+
+    for (let q in answersPart3) {
+      const inputEl = document.getElementById(q);
+      const studentAnswer = inputEl.value.trim().toUpperCase();
+      const correct = answersPart3[q].word;
+      const explanation = answersPart3[q].explanation;
+
+      if (studentAnswer === correct) {
+        score++;
+        inputEl.style.backgroundColor = "#c8e6c9"; // green
+        resultHTML += `<li>Question ${q.replace("gap","")} ✅ Correct (${correct})</li>`;
+      } else {
+        inputEl.style.backgroundColor = "#ffcdd2"; // red
+        resultHTML += `<li>Question ${q.replace("gap","")} ❌ Your answer: <strong>${studentAnswer || "—"}</strong>. Correct: <strong>${correct}</strong><br><em>${explanation}</em></li>`;
+      }
+    }
+
+    resultHTML += "</ul>";
+    resultHTML += `<p><strong>Your total score: ${score} / ${total}</strong></p>`;
+    document.getElementById("results").innerHTML = resultHTML;
+  }
+</script>
+
 </body>
 </html>
-
