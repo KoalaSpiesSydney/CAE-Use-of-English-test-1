@@ -39,13 +39,38 @@
       font-size: 1em;
       text-transform: uppercase;
     }
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #003366;
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    .bottom-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    .bottom-nav a:hover {
+      background-color: #0055a5;
+    }
+    body {
+      padding-bottom: 60px; /* Prevent content from hiding behind nav */
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>CAE– READING AND USE OF ENGLISH –</h1>
-  <p></p>
+  <h1>CAE – READING AND USE OF ENGLISH –</h1>
 </header>
 
 <div class="container">
@@ -59,7 +84,7 @@
     Social media exposes children <strong>(0)</strong> to rapid communication, peer influence, and curated content that can shape their self-image and behavior. 
     While it offers opportunities 9.
     <input type="text" id="q9" maxlength="20" /> 
-    creativity and connection, it also introduces risks 10.
+    creativity and connection, it also introduces risks such 10.
     <input type="text" id="q10" maxlength="20" /> 
     cyberbullying, privacy breaches, and addictive usage patterns. 
     Parents and educators protect children 11.
@@ -70,7 +95,18 @@
   </p>
 
   <p style="margin-top: 20px;"><strong>Hint:</strong> for, as, from, to, of etc</p>
+
+  <!-- Submit button -->
+  <div style="margin:20px 0;">
+    <button onclick="checkAnswersPart2()" style="padding:10px 20px; font-size:1em; background:#003366; color:white; border:none; border-radius:4px; cursor:pointer;">
+      Submit Answers
+    </button>
+  </div>
+
+  <!-- Results box -->
+  <div id="results" style="margin-top:30px; padding:15px; border:1px solid #ccc; background:#f9f9f9;"></div>
 </div>
+
 <!-- Bottom Navigation Bar -->
 <nav class="bottom-nav">
   <a href="index.html">Home</a>
@@ -80,38 +116,41 @@
   <a href="part4.html">Part 4</a>
 </nav>
 
-<style>
-  .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #003366;
-    display: flex;
-    justify-content: space-around;
-    padding: 12px 0;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
+<script>
+  // Correct answers + explanations
+  const answersPart2 = {
+    q9: { word: "FOR", explanation: "‘Opportunities for…’ is the correct preposition with ‘opportunity’." },
+    q10: { word: "AS", explanation: "‘Risks as…’ = risks such as cyberbullying, privacy breaches." },
+    q11: { word: "FROM", explanation: "Correct collocation: ‘protect someone from’ danger." },
+    q12: { word: "TO", explanation: "‘Allow someone to do something’ requires ‘to’." }
+  };
 
-  .bottom-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1em;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
+  function checkAnswersPart2() {
+    let score = 0;
+    let total = Object.keys(answersPart2).length;
+    let resultHTML = "<h3>Results</h3><ul>";
 
-  .bottom-nav a:hover {
-    background-color: #0055a5;
-  }
+    for (let q in answersPart2) {
+      const inputEl = document.getElementById(q);
+      const studentAnswer = inputEl.value.trim().toUpperCase();
+      const correct = answersPart2[q].word;
+      const explanation = answersPart2[q].explanation;
 
-  body {
-    padding-bottom: 60px; /* Prevent content from hiding behind nav */
+      if (studentAnswer === correct) {
+        score++;
+        inputEl.style.backgroundColor = "#c8e6c9"; // green
+        resultHTML += `<li>Question ${q.slice(1)} ✅ Correct (${correct})</li>`;
+      } else {
+        inputEl.style.backgroundColor = "#ffcdd2"; // red
+        resultHTML += `<li>Question ${q.slice(1)} ❌ Your answer: <strong>${studentAnswer || "—"}</strong>. Correct: <strong>${correct}</strong><br><em>${explanation}</em></li>`;
+      }
+    }
+
+    resultHTML += "</ul>";
+    resultHTML += `<p><strong>Your total score: ${score} / ${total}</strong></p>`;
+    document.getElementById("results").innerHTML = resultHTML;
   }
-</style>
+</script>
 
 </body>
 </html>
-
