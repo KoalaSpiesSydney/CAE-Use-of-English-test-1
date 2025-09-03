@@ -132,11 +132,11 @@
     <div class="question-block">
       <div class="question-number">17</div>
       <div class="sentence">
-       The Ceo said, "It is possible that the meeting will be postponed until after Christmas."
+       The CEO said, "It is possible that the meeting will be postponed until after Christmas."
       </div>
       <div class="sentence">
         <span class="word-given">MAY</span><br />
-        The meeting <input type="text" class="answer-input" placeholder="Your answer here" /> until after Christmas.
+        The meeting <input type="text" class="answer-input" id="q17" placeholder="Your answer here" /> until after Christmas.
       </div>
     </div>
 
@@ -147,7 +147,7 @@
       </div>
       <div class="sentence">
         <span class="word-given">RECOMMENDED</span><br />
-        She <input type="text" class="answer-input" placeholder="Your answer here" />  Italian restaurant in town.
+        She <input type="text" class="answer-input" id="q18" placeholder="Your answer here" /> Italian restaurant in town.
       </div>
     </div>
 
@@ -158,7 +158,7 @@
       </div>
       <div class="sentence">
         <span class="word-given">ADVISED</span><br />
-        The coach <input type="text" class="answer-input" placeholder="Your answer here" /> every day to improve.
+        The coach <input type="text" class="answer-input" id="q19" placeholder="Your answer here" /> every day to improve.
       </div>
     </div>
 
@@ -169,9 +169,19 @@
       </div>
       <div class="sentence">
         <span class="word-given">COMPLAINED</span><br />
-        The client <input type="text" class="answer-input" placeholder="Your answer here" /> arriving late.
+        The client <input type="text" class="answer-input" id="q20" placeholder="Your answer here" /> arriving late.
       </div>
     </div>
+
+    <!-- Submit button -->
+    <div style="margin:20px 0;">
+      <button onclick="checkAnswersPart4()" style="padding:10px 20px; font-size:1em; background:#003366; color:white; border:none; border-radius:4px; cursor:pointer;">
+        Submit Answers
+      </button>
+    </div>
+
+    <!-- Results box -->
+    <div id="results" style="margin-top:30px; padding:15px; border:1px solid #ccc; background:#f9f9f9;"></div>
   </div>
 
   <!-- Bottom Navigation Bar -->
@@ -183,6 +193,53 @@
     <a href="part4.html">Part 4</a>
   </nav>
 
+<script>
+  // Acceptable answers + explanations
+  const answersPart4 = {
+    q17: { 
+      words: ["may be postponed"], 
+      explanation: "‘May be postponed’ = possible that it will be postponed (passive)." 
+    },
+    q18: { 
+      words: ["recommended trying the new"], 
+      explanation: "‘Recommend + -ing’ when suggesting an activity: ‘She recommended trying…’" 
+    },
+    q19: { 
+      words: ["advised him to practise", "advised her to practise", "advised us to practise", "advised them to practise"], 
+      explanation: "‘Advise someone to do something’ allows different pronouns (him/her/us/them)." 
+    },
+    q20: { 
+      words: ["complained about the order"], 
+      explanation: "‘Complain about + noun/gerund’ = correct collocation." 
+    }
+  };
+
+  function checkAnswersPart4() {
+    let score = 0;
+    let total = Object.keys(answersPart4).length;
+    let resultHTML = "<h3>Results</h3><ul>";
+
+    for (let q in answersPart4) {
+      const inputEl = document.getElementById(q);
+      const studentAnswer = inputEl.value.trim().toLowerCase();
+      const correctList = answersPart4[q].words.map(a => a.toLowerCase());
+      const explanation = answersPart4[q].explanation;
+
+      if (correctList.some(ans => studentAnswer.includes(ans))) {
+        score++;
+        inputEl.style.backgroundColor = "#c8e6c9"; // green
+        resultHTML += `<li>Question ${q.slice(1)} ✅ Correct (${answersPart4[q].words.join(" / ")})</li>`;
+      } else {
+        inputEl.style.backgroundColor = "#ffcdd2"; // red
+        resultHTML += `<li>Question ${q.slice(1)} ❌ Your answer: <strong>${studentAnswer || "—"}</strong>. Acceptable answers: <strong>${answersPart4[q].words.join(" / ")}</strong><br><em>${explanation}</em></li>`;
+      }
+    }
+
+    resultHTML += "</ul>";
+    resultHTML += `<p><strong>Your total score: ${score} / ${total}</strong></p>`;
+    document.getElementById("results").innerHTML = resultHTML;
+  }
+</script>
+
 </body>
 </html>
-
