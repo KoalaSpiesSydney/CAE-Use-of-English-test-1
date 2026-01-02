@@ -2,193 +2,401 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CAE Test – Part 3 Gap Fill</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CAE Test – Part 3 Word Formation</title>
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      color: #222;
-      margin: 0;
-      padding: 20px;
-      padding-bottom: 80px; /* space for nav */
+    :root{
+      --bg:#1e1e1e;
+      --card:#2a2a2a;
+      --ink:#f5f5f5;
+      --muted:#bbbbbb;
+      --accent:#ff7a1a;
+      --line:#3a3a3a;
+      --radius:16px;
+      --shadow:0 6px 24px rgba(0,0,0,.25);
+      --ok:#1db954;
+      --err:#e74c3c;
     }
 
-    .wrapper {
-      max-width: 900px;
-      margin: 0 auto;
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; margin:0; }
+
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      margin:0;
+      padding-bottom:80px; /* space for nav */
+      line-height:1.75;
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
     }
 
-    h1, h2 {
-      text-align: center;
+    /* ===== Header (branded) ===== */
+    header{
+      position:sticky; top:0; z-index:10;
+      background:var(--card);
+      border-bottom:1px solid var(--line);
+      padding:.9rem 1rem;
+    }
+    header h1{
+      max-width:1100px;
+      margin:0 auto;
+      font-size:clamp(1rem,3.2vw,1.25rem);
+      font-weight:800;
+      letter-spacing:.2px;
+      text-transform:uppercase;
+      color:var(--accent);
+      text-align:center;
     }
 
-    p {
-      line-height: 1.5;
-      margin-bottom: 1em;
+    /* ===== Wrapper / Card ===== */
+    .wrapper{
+      width:min(92%, 900px);
+      margin: clamp(18px, 4vw, 32px) auto;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:clamp(1.2rem, 3.8vw, 2.2rem);
     }
 
-    .instructions {
-      font-weight: bold;
-      margin-bottom: 15px;
+    h2{
+      margin:0 0 .6rem 0;
+      color:var(--accent);
+      font-size:clamp(1.2rem,3.5vw,1.55rem);
+      text-align:center;
     }
 
-    .example {
-      margin: 10px 0 20px 0;
-      font-weight: bold;
+    p{ margin:.75rem 0; color:var(--ink); }
+    .instructions{
+      color:var(--muted);
+      margin-top:.3rem;
     }
 
-    .example-box {
-      display: flex;
-      justify-content: center;
-      gap: 5px;
-      margin-top: 5px;
+    strong{
+      color:var(--accent);
+      text-decoration:underline;
+      text-underline-offset:3px;
+      text-decoration-thickness:2px;
+      font-weight:800;
     }
 
-    .example-box input {
-      width: 30px;
-      font-size: 18px;
-      text-transform: uppercase;
-      text-align: center;
-      border: 1px solid #ccc;
-      padding: 3px 5px;
+    /* ===== Example ===== */
+    .example{
+      margin: 12px 0 18px;
+      padding: 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#252525;
+      text-align:center;
+      color:var(--muted);
+      font-weight:700;
+    }
+    .example-box{
+      display:flex;
+      justify-content:center;
+      gap:6px;
+      margin-top:10px;
+      flex-wrap:wrap;
+    }
+    .example-box input{
+      width:34px;
+      font-size:18px;
+      text-transform:uppercase;
+      text-align:center;
+      border:1px solid var(--line);
+      border-radius:8px;
+      padding:6px 0;
+      background:#333;
+      color:var(--ink);
     }
 
-    .gap-input {
-      width: 120px;
-      text-transform: uppercase;
-      padding: 4px;
-      font-size: 1em;
-      border: 1px solid #aaa;
-      margin-left: 5px;
-      vertical-align: middle;
-    }
-
-    .text-block {
-      background: white;
-      padding: 20px;
-      border-radius: 6px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
+    /* ===== Text Block ===== */
+    .text-block{
+      background:#252525;
+      padding: 18px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      margin-bottom: 18px;
       font-size: 1.05em;
     }
 
-    .words-list {
-      margin-top: 20px;
-      background: #fff;
-      padding: 10px 20px;
-      border-radius: 6px;
-      box-shadow: 0 0 4px rgba(0,0,0,0.1);
-      font-weight: bold;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
+    /* ===== Inputs ===== */
+    .gap-input{
+      background:#333;
+      color:var(--ink);
+      border:1px solid var(--line);
+      border-radius:8px;
+      padding:0.4rem 0.55rem;
+      font:inherit;
+      width: 160px;
+      max-width: 65vw;
+      margin:0 6px;
+      vertical-align:baseline;
+      text-transform: uppercase;
+      outline:none;
+    }
+    .gap-input.correct{
+      border-color:var(--ok);
+      box-shadow:0 0 0 2px rgba(29,185,84,0.18);
+    }
+    .gap-input.wrong{
+      border-color:var(--err);
+      box-shadow:0 0 0 2px rgba(231,76,60,0.16);
+    }
+    .gap-input:disabled{
+      background:#263126;
+      border-color:var(--ok);
+      font-weight:800;
     }
 
-    .word-item {
-      background: #e4e4e4;
-      padding: 5px 10px;
-      border-radius: 4px;
-      user-select: none;
+    /* ===== Words list ===== */
+    .words-list{
+      margin-top: 14px;
+      background:#252525;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      font-weight:800;
+      color:var(--muted);
+    }
+    .word-item{
+      background:#303030;
+      border:1px solid rgba(255,122,26,0.25);
+      padding: 6px 10px;
+      border-radius: 999px;
+      user-select:none;
+      color:var(--ink);
     }
 
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background-color: #003366;
-      display: flex;
-      justify-content: space-around;
-      padding: 12px 0;
-      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-      z-index: 1000;
+    /* ===== Submit / Score / Reveal ===== */
+    .submit-block{
+      margin-top:1.6rem;
+      padding:1rem;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#252525;
+    }
+    .submit-row{
+      display:flex;
+      gap:.75rem;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .score-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.45rem .75rem;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#1f1f1f;
+      font-weight:800;
+    }
+    .score-pill b{ color:var(--accent); }
+
+    .actions{
+      display:flex;
+      gap:.6rem;
+      flex-wrap:wrap;
+      align-items:center;
     }
 
-    .bottom-nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1em;
-      padding: 8px 12px;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
+    .btn{
+      background:var(--accent);
+      color:#111;
+      border:none;
+      border-radius:10px;
+      padding:.65rem 1.1rem;
+      cursor:pointer;
+      font-size:1rem;
+      font-weight:800;
+      transition:transform .15s ease, filter .2s ease;
+    }
+    .btn:hover{ transform:translateY(-1px); filter:brightness(1.05); }
+
+    .btn-ghost{
+      background:transparent;
+      color:var(--accent);
+      border:1px solid var(--accent);
+    }
+    .btn-ghost:hover{
+      background:var(--accent);
+      color:#111;
     }
 
-    .bottom-nav a:hover {
-      background-color: #0055a5;
+    .notice{
+      margin-top:.75rem;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    #answerKey{
+      margin-top:.9rem;
+      display:none;
+      border-top:1px solid var(--line);
+      padding-top:.9rem;
+      color:var(--muted);
+    }
+
+    .key-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+      gap:.35rem 1rem;
+      margin-top:.5rem;
+      font-size:.98rem;
+    }
+
+    /* ===== Bottom Navigation (branded) ===== */
+    .bottom-nav{
+      position:fixed;
+      bottom:0; left:0; right:0;
+      background:var(--card);
+      border-top:1px solid var(--line);
+      display:flex;
+      justify-content:space-around;
+      align-items:center;
+      padding:0.7rem 0.5rem;
+      box-shadow:0 -2px 10px rgba(0,0,0,0.25);
+      z-index:1000;
+    }
+    .bottom-nav a{
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:800;
+      font-size:0.98rem;
+      padding:0.55rem 0.8rem;
+      border-radius:10px;
+      transition:background-color .2s ease, color .2s ease, transform .15s ease;
+      text-align:center;
+      flex:1;
+      margin:0 4px;
+      border:1px solid rgba(255,122,26,0.25);
+    }
+    .bottom-nav a:hover{
+      background:var(--accent);
+      color:#111;
+      transform:translateY(-1px);
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width:600px){
+      .gap-input{
+        display:block;
+        width:100%;
+        max-width:100%;
+        margin:0.4rem 0;
+      }
+      .bottom-nav a{ font-size:0.9rem; padding:0.5rem; }
+    }
+
+    @media print{
+      header,.submit-block,.bottom-nav{ display:none; }
+      .wrapper{ box-shadow:none; }
     }
   </style>
 </head>
+
 <body>
 
-  <div class="wrapper">
-    <h1>CAE Test 3</h1>
-    <h2>Part 3</h2>
+<header>
+  <h1>Modern English Australia – CAE Test 3</h1>
+</header>
 
-    <p class="instructions">
-      For questions <strong>13–16</strong>, read the text below. Use the word given in capitals at the end of some lines to form a word that fits the gap in the same line. There is an example at the beginning (0).
+<div class="wrapper">
+  <h2>Part 3</h2>
+
+  <p class="instructions">
+    For questions <strong>13–16</strong>, read the text below. Use the word given in capitals at the end of some lines to form a word that fits the gap in the same line. There is an example at the beginning (0).
+  </p>
+
+  <p class="instructions" style="font-weight:600;">
+    Write your answers <strong>IN CAPITAL LETTERS</strong> on the separate answer sheet.
+  </p>
+
+  <div class="example">
+    Example: (0) ADAPTABLE
+    <div class="example-box" aria-hidden="true">
+      <input type="text" maxlength="1" value="A" readonly />
+      <input type="text" maxlength="1" value="D" readonly />
+      <input type="text" maxlength="1" value="A" readonly />
+      <input type="text" maxlength="1" value="P" readonly />
+      <input type="text" maxlength="1" value="T" readonly />
+      <input type="text" maxlength="1" value="A" readonly />
+      <input type="text" maxlength="1" value="B" readonly />
+      <input type="text" maxlength="1" value="L" readonly />
+      <input type="text" maxlength="1" value="E" readonly />
+    </div>
+  </div>
+
+  <div class="text-block">
+    <p>
+      Hair is the most easily (0) <strong>ADAPTABLE</strong> part of the human body and also one of the most (13)
+      <input type="text" class="gap-input" id="gap13" maxlength="15" aria-label="Answer gap 13" />.
+      The first barbers appeared in ancient Greece, when short hair became a sign of social status. Similarly, South American Inca chiefs had their hair short; in contrast, the hair of their citizens got (14)
+      <input type="text" class="gap-input" id="gap14" maxlength="15" aria-label="Answer gap 14" />
+      longer the further down the social chain they were. Barbers prospered in the days of the Roman Empire, until they were expelled from Rome, when it was discovered how much they earned.
     </p>
 
-    <p class="instructions" style="font-weight:normal;">
-      Write your answers <strong>IN CAPITAL LETTERS</strong> on the separate answer sheet.
+    <p>
+      Women have always reflected fashion through their hairstyles, sometimes quite (15)
+      <input type="text" class="gap-input" id="gap15" maxlength="15" aria-label="Answer gap 15" />.
+      In 15th-century Europe, women would pluck the hair from the front of their heads in (16)
+      <input type="text" class="gap-input" id="gap16" maxlength="15" aria-label="Answer gap 16" />
+      of beauty.
     </p>
+  </div>
 
-    <div class="example">
-      Example: 0
-      <div class="example-box">
-        <input type="text" maxlength="1" value="A" readonly />
-        <input type="text" maxlength="1" value="D" readonly />
-        <input type="text" maxlength="1" value="A" readonly />
-        <input type="text" maxlength="1" value="P" readonly />
-        <input type="text" maxlength="1" value="T" readonly />
-        <input type="text" maxlength="1" value="A" readonly />
-        <input type="text" maxlength="1" value="B" readonly />
-        <input type="text" maxlength="1" value="L" readonly />
-        <input type="text" maxlength="1" value="E" readonly />
+  <div class="words-list" aria-label="Word list">
+    <div class="word-item">ADAPT</div>
+    <div class="word-item">DISTINCT</div>
+    <div class="word-item">PROGRESS</div>
+    <div class="word-item">DRAMA</div>
+    <div class="word-item">PURSUE</div>
+  </div>
+
+  <!-- ===== Submit / Score / Reveal ===== -->
+  <section class="submit-block" aria-label="Submit answers and score">
+    <div class="submit-row">
+      <div class="score-pill">Score: <b id="scoreText">—</b></div>
+
+      <div class="actions">
+        <button type="button" class="btn" id="submitBtn">Submit answers</button>
+        <button type="button" class="btn btn-ghost" id="tryAgainBtn">Try again</button>
+        <button type="button" class="btn btn-ghost" id="toggleKeyBtn">Show answer key</button>
       </div>
     </div>
 
-    <div class="text-block">
-      <p>
-        Hair is the most easily (0) <strong>ADAPTABLE</strong> part of the human body and also one of the most (13) 
-        <input type="text" class="gap-input" id="gap13" maxlength="15" aria-label="Answer gap 13" />. The first barbers appeared in ancient Greece, when short hair became a sign of social status. Similarly, South American Inca chiefs had their hair short; in contrast, the hair of their citizens got (14) 
-        <input type="text" class="gap-input" id="gap14" maxlength="15" aria-label="Answer gap 14" /> longer the further down the social chain they were. Barbers prospered in the days of the Roman Empire, until they were expelled from Rome, when it was discovered how much they earned.
-      </p>
-
-      <p>
-        Women have always reflected fashion through their hairstyles, sometimes quite (15) 
-        <input type="text" class="gap-input" id="gap15" maxlength="15" aria-label="Answer gap 15" />. In 15th-century Europe, women would pluck the hair from the front of their heads in (16) 
-        <input type="text" class="gap-input" id="gap16" maxlength="15" aria-label="Answer gap 16" /> of beauty. 
-      </p>
+    <div class="notice" id="noticeText">
+      Answer questions 13–16, then submit to see your score. Correct answers will lock.
     </div>
 
-    <div class="words-list">
-      <div class="word-item">ADAPT</div>
-      <div class="word-item">DISTINCT</div>
-      <div class="word-item">PROGRESS</div>
-      <div class="word-item">DRAMA</div>
-      <div class="word-item">PURSUE</div>
+    <div id="answerKey">
+      <strong>Answer key</strong>
+      <div class="key-grid" id="keyGrid"></div>
+      <div class="notice" style="margin-top:0.6rem;">
+        Explanations included (same as your original).
+      </div>
     </div>
+  </section>
+</div>
 
-    <!-- Submit button -->
-    <div style="margin:20px 0;">
-      <button onclick="checkAnswersPart3()" style="padding:10px 20px; font-size:1em; background:#003366; color:white; border:none; border-radius:4px; cursor:pointer;">
-        Submit Answers
-      </button>
-    </div>
-
-    <!-- Results box -->
-    <div id="results" style="margin-top:30px; padding:15px; border:1px solid #ccc; background:#f9f9f9;"></div>
-  </div>
-
-  <!-- Bottom Navigation Bar -->
-  <nav class="bottom-nav">
-    <a href="index.html">Home</a>
-    <a href="part1.html">Part 1</a>
-    <a href="part2.html">Part 2</a>
-    <a href="part3.html">Part 3</a>
-    <a href="part4.html">Part 4</a>
-  </nav>
+<!-- Bottom Navigation Bar -->
+<nav class="bottom-nav">
+  <a href="index.html">Home</a>
+  <a href="part1.html">Part 1</a>
+  <a href="part2.html">Part 2</a>
+  <a href="part3.html">Part 3</a>
+  <a href="part4.html">Part 4</a>
+</nav>
 
 <script>
   // Correct answers + explanations
@@ -199,32 +407,88 @@
     gap16: { word: "PURSUIT", explanation: "From PURSUE → ‘in pursuit of beauty’ is the fixed phrase." }
   };
 
-  function checkAnswersPart3() {
-    let score = 0;
-    let total = Object.keys(answersPart3).length;
-    let resultHTML = "<h3>Results</h3><ul>";
+  const inputs = Object.keys(answersPart3).map(id => document.getElementById(id));
+  const submitBtn = document.getElementById("submitBtn");
+  const tryAgainBtn = document.getElementById("tryAgainBtn");
+  const toggleKeyBtn = document.getElementById("toggleKeyBtn");
+  const scoreText = document.getElementById("scoreText");
+  const noticeText = document.getElementById("noticeText");
+  const answerKey = document.getElementById("answerKey");
+  const keyGrid = document.getElementById("keyGrid");
 
-    for (let q in answersPart3) {
-      const inputEl = document.getElementById(q);
-      const studentAnswer = inputEl.value.trim().toUpperCase();
-      const correct = answersPart3[q].word;
-      const explanation = answersPart3[q].explanation;
+  function norm(s){
+    return (s || "").trim().toUpperCase().replace(/\s+/g," ");
+  }
 
-      if (studentAnswer === correct) {
-        score++;
-        inputEl.style.backgroundColor = "#c8e6c9"; // green
-        resultHTML += `<li>Question ${q.replace("gap","")} ✅ Correct (${correct})</li>`;
-      } else {
-        inputEl.style.backgroundColor = "#ffcdd2"; // red
-        resultHTML += `<li>Question ${q.replace("gap","")} ❌ Your answer: <strong>${studentAnswer || "—"}</strong>. Correct: <strong>${correct}</strong><br><em>${explanation}</em></li>`;
-      }
+  function buildKey(){
+    keyGrid.innerHTML = "";
+    Object.keys(answersPart3).forEach(q=>{
+      const item = answersPart3[q];
+      const div = document.createElement("div");
+      div.innerHTML = `<strong>${q.toUpperCase()}</strong>: ${item.word}<br><em>${item.explanation}</em>`;
+      keyGrid.appendChild(div);
+    });
+  }
+
+  function allAnswered(){
+    return inputs.every(inp => norm(inp.value) !== "");
+  }
+
+  function grade(){
+    if (!allAnswered()){
+      noticeText.textContent = "Please answer all questions (13–16) before submitting.";
+      return;
     }
 
-    resultHTML += "</ul>";
-    resultHTML += `<p><strong>Your total score: ${score} / ${total}</strong></p>`;
-    document.getElementById("results").innerHTML = resultHTML;
+    let score = 0;
+
+    inputs.forEach(inp=>{
+      const key = inp.id;
+      const student = norm(inp.value);
+      const correct = answersPart3[key].word;
+
+      inp.classList.remove("correct","wrong");
+
+      if (student === correct){
+        score++;
+        inp.classList.add("correct");
+        inp.disabled = true; // lock correct
+      } else {
+        inp.classList.add("wrong");
+        inp.disabled = false;
+      }
+    });
+
+    scoreText.textContent = `${score} / ${inputs.length}`;
+
+    if (score === inputs.length){
+      noticeText.textContent = "Perfect score. Nice work.";
+    } else {
+      noticeText.textContent = "Correct answers are locked. Fix the red ones and submit again.";
+    }
   }
+
+  submitBtn.addEventListener("click", grade);
+
+  tryAgainBtn.addEventListener("click", ()=>{
+    inputs.forEach(inp=>{
+      inp.value = "";
+      inp.disabled = false;
+      inp.classList.remove("correct","wrong");
+    });
+    scoreText.textContent = "—";
+    noticeText.textContent = "Reset complete. Try again.";
+  });
+
+  toggleKeyBtn.addEventListener("click", ()=>{
+    const showing = answerKey.style.display === "block";
+    answerKey.style.display = showing ? "none" : "block";
+    toggleKeyBtn.textContent = showing ? "Show answer key" : "Hide answer key";
+  });
+
+  buildKey();
 </script>
 
 </body>
 </html>
+
