@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Use of Language – CAE Practice</title>
 
   <style>
@@ -16,96 +17,123 @@
       --radius:14px;
     }
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        linear-gradient(180deg, #eef2f3 0%, #f7f8f9 100%);
-      color: var(--ink);
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background: linear-gradient(180deg, #eef2f3 0%, #f7f8f9 100%);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
     }
 
     /* ===== Header ===== */
-    header {
-      background:
-        linear-gradient(135deg, var(--slate), var(--teal));
-      color: white;
-      padding: 32px 20px 36px;
-      text-align: center;
-      position: relative;
+    header{
+      background: linear-gradient(135deg, var(--slate), var(--teal));
+      color:#fff;
+      padding: 18px 16px 18px;
+      text-align:center;
+      position:relative;
     }
-
     header::after{
       content:"";
       position:absolute;
       left:0; right:0; bottom:0;
       height:6px;
-      background:linear-gradient(
-        90deg,
-        var(--accent),
-        #ffb46a
-      );
+      background:linear-gradient(90deg, var(--accent), #ffb46a);
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.8em;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    header h1{
+      margin:0;
+      font-size: clamp(1.15rem, 4.4vw, 1.7rem);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      padding: 10px 0 0; /* room so icon doesn’t collide */
     }
 
-    /* Home icon */
-    .home-link {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      text-decoration: none;
-      font-size: 1.3em;
-      color: white;
+    /* Home icon (bigger tap target + safe area) */
+    .home-link{
+      position:absolute;
+      top: max(12px, env(safe-area-inset-top));
+      left: max(12px, env(safe-area-inset-left));
+      text-decoration:none;
+      font-size: 1.05rem;
+      line-height:1;
+      color:#fff;
       background: rgba(255,255,255,0.18);
-      padding: 6px 10px;
-      border-radius: 8px;
+      border:1px solid rgba(255,255,255,0.22);
+      padding: 12px 12px;        /* 44px-ish tap target */
+      border-radius: 12px;
       backdrop-filter: blur(6px);
-      transition: background 0.25s ease, transform 0.25s ease;
+      transition: background .2s ease, transform .2s ease;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-width:44px;
+      min-height:44px;
     }
-
-    .home-link:hover {
-      background: rgba(255,255,255,0.35);
+    .home-link:hover{
+      background: rgba(255,255,255,0.34);
       transform: translateY(-1px);
     }
 
     /* ===== Main card ===== */
-    .main-content {
-      max-width: 620px;
-      margin: 60px auto;
+    .main-content{
+      width:min(92%, 720px);
+      margin: clamp(16px, 5vw, 44px) auto;
       background: var(--card);
-      padding: 40px 36px;
+      padding: clamp(18px, 5vw, 40px);
       box-shadow: var(--shadow);
       border-radius: var(--radius);
-      text-align: center;
+      text-align:center;
     }
 
-    .main-content h2 {
-      margin: 0 0 30px;
-      font-weight: 600;
+    .main-content h2{
+      margin: 0 0 18px;
+      font-weight: 700;
       color: var(--slate);
-      letter-spacing: .5px;
+      letter-spacing: .02em;
+      font-size: clamp(1.05rem, 3.6vw, 1.3rem);
     }
 
     /* ===== Buttons ===== */
-    .nav-button {
-      display: block;
-      width: 240px;
-      margin: 14px auto;
-      padding: 14px 18px;
-      color: white;
-      text-decoration: none;
-      font-size: 1.05em;
-      border-radius: 10px;
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        filter 0.25s ease;
+    .nav-grid{
+      display:grid;
+      grid-template-columns: 1fr;  /* mobile-first */
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .nav-button{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      width:100%;
+      margin:0;
+      padding: 14px 16px;
+      color:#fff;
+      text-decoration:none;
+      font-size: 1.03rem;
+      border-radius: 12px;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
       box-shadow: 0 6px 18px rgba(0,0,0,.18);
+      min-height:54px;
+      justify-content:center;
+      align-items:flex-start;
+      text-align:left;
+    }
+
+    .nav-button .title{
+      font-weight: 800;
+      letter-spacing:.01em;
+    }
+
+    .nav-button .desc{
+      font-size: .92rem;
+      opacity:.9;
+      line-height:1.25;
     }
 
     /* Subtle variation per part */
@@ -114,40 +142,67 @@
     .p3{ background: linear-gradient(135deg, #8a6fa5, #6a4f8a); }
     .p4{ background: linear-gradient(135deg, #a56f4a, #8a5530); }
 
-    .nav-button:hover {
-      transform: translateY(-3px);
-      filter: brightness(1.05);
-      box-shadow: 0 10px 26px rgba(0,0,0,.25);
+    .nav-button:hover{
+      transform: translateY(-2px);
+      filter: brightness(1.04);
+      box-shadow: 0 10px 26px rgba(0,0,0,.22);
     }
 
-    /* ===== Mobile ===== */
-    @media (max-width: 600px){
-      .main-content{
-        margin: 40px 16px;
-        padding: 32px 24px;
+    /* ===== Wider screens ===== */
+    @media (min-width: 700px){
+      header{
+        padding: 26px 20px 30px;
       }
-
+      .nav-grid{
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
       .nav-button{
-        width: 100%;
+        min-height:72px;
+      }
+    }
+
+    @media (min-width: 1000px){
+      .main-content{
+        width:min(92%, 760px);
       }
     }
   </style>
 </head>
+
 <body>
 
 <header>
-  <a href="https://ieltspteaustralianexaminertutor.com/" class="home-link">🏠</a>
+  <a href="https://ieltspteaustralianexaminertutor.com/" class="home-link" aria-label="Home">🏠</a>
   <h1>Use of Language</h1>
 </header>
 
-<div class="main-content">
+<main class="main-content">
   <h2>Choose a Part</h2>
 
-  <a href="part1.html" class="nav-button p1">Part 1 – Multiple-Choice Cloze</a>
-  <a href="part2.html" class="nav-button p2">Part 2 – Open Cloze</a>
-  <a href="part3.html" class="nav-button p3">Part 3 – Word Formation</a>
-  <a href="part4.html" class="nav-button p4">Part 4 – Key Word Transformations</a>
-</div>
+  <div class="nav-grid">
+    <a href="part1.html" class="nav-button p1">
+      <div class="title">Part 1</div>
+      <div class="desc">Multiple-Choice Cloze</div>
+    </a>
+
+    <a href="part2.html" class="nav-button p2">
+      <div class="title">Part 2</div>
+      <div class="desc">Open Cloze</div>
+    </a>
+
+    <a href="part3.html" class="nav-button p3">
+      <div class="title">Part 3</div>
+      <div class="desc">Word Formation</div>
+    </a>
+
+    <a href="part4.html" class="nav-button p4">
+      <div class="title">Part 4</div>
+      <div class="desc">Key Word Transformations</div>
+    </a>
+  </div>
+</main>
 
 </body>
 </html>
+
