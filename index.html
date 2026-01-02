@@ -33,10 +33,11 @@
     header{
       background: linear-gradient(135deg, var(--slate), var(--teal));
       color:#fff;
-      padding: 18px 16px 18px;
+      padding: 18px 16px 22px;
       text-align:center;
       position:relative;
     }
+
     header::after{
       content:"";
       position:absolute;
@@ -45,41 +46,56 @@
       background:linear-gradient(90deg, var(--accent), #ffb46a);
     }
 
+    .brand{
+      font-size: clamp(0.75rem, 3vw, 0.9rem);
+      letter-spacing: 0.25em;
+      font-weight: 700;
+      opacity: 0.9;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
     header h1{
       margin:0;
       font-size: clamp(1.15rem, 4.4vw, 1.7rem);
       letter-spacing:.08em;
       text-transform:uppercase;
-      padding: 10px 0 0; /* room so icon doesn’t collide */
     }
 
-    /* Home icon (bigger tap target + safe area) */
+    header a{
+      color:#fff;
+      text-decoration:none;
+    }
+
+    /* Home icon */
     .home-link{
       position:absolute;
       top: max(12px, env(safe-area-inset-top));
       left: max(12px, env(safe-area-inset-left));
-      text-decoration:none;
       font-size: 1.05rem;
-      line-height:1;
-      color:#fff;
       background: rgba(255,255,255,0.18);
       border:1px solid rgba(255,255,255,0.22);
-      padding: 12px 12px;        /* 44px-ish tap target */
-      border-radius: 12px;
+      padding:12px;
+      border-radius:12px;
       backdrop-filter: blur(6px);
-      transition: background .2s ease, transform .2s ease;
+      min-width:44px;
+      min-height:44px;
       display:flex;
       align-items:center;
       justify-content:center;
-      min-width:44px;
-      min-height:44px;
+      transition: background .2s ease, transform .2s ease;
     }
+
     .home-link:hover{
       background: rgba(255,255,255,0.34);
       transform: translateY(-1px);
     }
 
-    /* ===== Main card ===== */
+    /* ===== Main ===== */
+    main{
+      flex:1;
+    }
+
     .main-content{
       width:min(92%, 720px);
       margin: clamp(16px, 5vw, 44px) auto;
@@ -94,49 +110,39 @@
       margin: 0 0 18px;
       font-weight: 700;
       color: var(--slate);
-      letter-spacing: .02em;
       font-size: clamp(1.05rem, 3.6vw, 1.3rem);
     }
 
     /* ===== Buttons ===== */
     .nav-grid{
       display:grid;
-      grid-template-columns: 1fr;  /* mobile-first */
+      grid-template-columns: 1fr;
       gap: 12px;
-      margin-top: 10px;
     }
 
     .nav-button{
       display:flex;
       flex-direction:column;
       gap:6px;
-      width:100%;
-      margin:0;
       padding: 14px 16px;
       color:#fff;
       text-decoration:none;
-      font-size: 1.03rem;
       border-radius: 12px;
-      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
       box-shadow: 0 6px 18px rgba(0,0,0,.18);
-      min-height:54px;
-      justify-content:center;
-      align-items:flex-start;
+      min-height:56px;
       text-align:left;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
     }
 
     .nav-button .title{
       font-weight: 800;
-      letter-spacing:.01em;
     }
 
     .nav-button .desc{
       font-size: .92rem;
       opacity:.9;
-      line-height:1.25;
     }
 
-    /* Subtle variation per part */
     .p1{ background: linear-gradient(135deg, #4a6fa5, #3f5f8a); }
     .p2{ background: linear-gradient(135deg, #3f8f7d, #2f6f60); }
     .p3{ background: linear-gradient(135deg, #8a6fa5, #6a4f8a); }
@@ -148,23 +154,22 @@
       box-shadow: 0 10px 26px rgba(0,0,0,.22);
     }
 
-    /* ===== Wider screens ===== */
-    @media (min-width: 700px){
-      header{
-        padding: 26px 20px 30px;
-      }
-      .nav-grid{
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-      }
-      .nav-button{
-        min-height:72px;
-      }
+    /* ===== Footer ===== */
+    footer{
+      text-align:center;
+      padding: 14px 12px;
+      font-size: 0.85rem;
+      color: #666;
     }
 
-    @media (min-width: 1000px){
-      .main-content{
-        width:min(92%, 760px);
+    footer span{
+      font-weight:600;
+    }
+
+    /* ===== Larger screens ===== */
+    @media (min-width:700px){
+      .nav-grid{
+        grid-template-columns: 1fr 1fr;
       }
     }
   </style>
@@ -174,35 +179,48 @@
 
 <header>
   <a href="https://ieltspteaustralianexaminertutor.com/" class="home-link" aria-label="Home">🏠</a>
-  <h1>Use of Language</h1>
+
+  <div class="brand">MODERN ENGLISH AUSTRALIA</div>
+  <h1>
+    <a href="https://ieltspteaustralianexaminertutor.com/">
+      Use of Language
+    </a>
+  </h1>
 </header>
 
-<main class="main-content">
-  <h2>Choose a Part</h2>
+<main>
+  <section class="main-content">
+    <h2>Choose a Part</h2>
 
-  <div class="nav-grid">
-    <a href="part1.html" class="nav-button p1">
-      <div class="title">Part 1</div>
-      <div class="desc">Multiple-Choice Cloze</div>
-    </a>
+    <div class="nav-grid">
+      <a href="part1.html" class="nav-button p1">
+        <div class="title">Part 1</div>
+        <div class="desc">Multiple-Choice Cloze</div>
+      </a>
 
-    <a href="part2.html" class="nav-button p2">
-      <div class="title">Part 2</div>
-      <div class="desc">Open Cloze</div>
-    </a>
+      <a href="part2.html" class="nav-button p2">
+        <div class="title">Part 2</div>
+        <div class="desc">Open Cloze</div>
+      </a>
 
-    <a href="part3.html" class="nav-button p3">
-      <div class="title">Part 3</div>
-      <div class="desc">Word Formation</div>
-    </a>
+      <a href="part3.html" class="nav-button p3">
+        <div class="title">Part 3</div>
+        <div class="desc">Word Formation</div>
+      </a>
 
-    <a href="part4.html" class="nav-button p4">
-      <div class="title">Part 4</div>
-      <div class="desc">Key Word Transformations</div>
-    </a>
-  </div>
+      <a href="part4.html" class="nav-button p4">
+        <div class="title">Part 4</div>
+        <div class="desc">Key Word Transformations</div>
+      </a>
+    </div>
+  </section>
 </main>
+
+<footer>
+  © <span>Koala Spies Sydney</span> 2025
+</footer>
 
 </body>
 </html>
+
 
