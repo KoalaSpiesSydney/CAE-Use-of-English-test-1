@@ -7,16 +7,21 @@
 
   <style>
     :root{
-      --bg:#1e1e1e;
-      --card:#2a2a2a;
-      --ink:#f5f5f5;
-      --muted:#bbbbbb;
-      --accent:#ff7a1a;
-      --line:#3a3a3a;
+      /* ===== GREEN THEME (matches cover button) ===== */
+      --bg:#1e2328;
+      --card:#263038;
+      --ink:#f5f7f8;
+      --muted:#b6c2c9;
+
+      --accent:#2bb673;       /* primary green */
+      --accent-soft:#62d49b;  /* hover / highlight */
+
+      --line:#34424c;
       --radius:16px;
-      --shadow:0 6px 24px rgba(0,0,0,.25);
-      --ok:#1db954;
-      --err:#e74c3c;
+      --shadow:0 8px 28px rgba(0,0,0,.28);
+
+      --ok:#2bb673;
+      --err:#e25c5c;
     }
 
     *{ box-sizing:border-box; }
@@ -30,31 +35,40 @@
       flex-direction:column;
       min-height:100vh;
       line-height:1.75;
-      padding-bottom:80px; /* space for bottom nav */
+      padding-bottom:84px; /* space for bottom nav */
     }
 
-    /* ===== Header (branded) ===== */
+    /* ===== Header (green branded) ===== */
     header{
-      position:sticky; top:0; z-index:10;
-      background:var(--card);
+      position:sticky; top:0; z-index:20;
+      background:linear-gradient(135deg,#2a3b39,#1f5a45);
       border-bottom:1px solid var(--line);
-      padding:.9rem 1rem;
     }
-    header h1{
+    .header-inner{
       max-width:1100px;
       margin:0 auto;
-      font-size:clamp(1rem,3.2vw,1.25rem);
-      font-weight:800;
-      letter-spacing:.2px;
-      text-transform:uppercase;
-      color:var(--accent);
+      padding:.9rem 1rem 1.05rem;
       text-align:center;
+    }
+    .brand{
+      font-size:.75rem;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      opacity:.85;
+    }
+    header h1{
+      margin:.35rem 0 0;
+      font-size:clamp(1rem,3.2vw,1.25rem);
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#fff;
     }
 
     /* ===== Main ===== */
     .container{
       width:min(92%, 900px);
-      margin: clamp(18px, 4vw, 32px) auto;
+      margin: clamp(16px, 4vw, 32px) auto;
       background:var(--card);
       border:1px solid var(--line);
       border-radius:var(--radius);
@@ -64,7 +78,7 @@
 
     h2{
       margin:0 0 .75rem 0;
-      color:var(--accent);
+      color:var(--accent-soft);
       font-size:clamp(1.2rem,3.5vw,1.55rem);
       text-align:center;
     }
@@ -74,22 +88,22 @@
     em{ color:var(--muted); }
 
     strong{
-      color:var(--accent);
+      color:var(--accent-soft);
       text-decoration:underline;
       text-underline-offset:3px;
       text-decoration-thickness:2px;
-      font-weight:800;
+      font-weight:900;
     }
 
     .lead{ color:var(--muted); margin-top:0; }
 
     /* ===== Inputs ===== */
     input[type="text"]{
-      background:#333;
+      background:#2f3a42;
       color:var(--ink);
       border:1px solid var(--line);
-      border-radius:8px;
-      padding:0.4rem 0.55rem;
+      border-radius:10px;
+      padding:0.5rem 0.65rem;
       margin:0 6px;
       font:inherit;
       width: 110px;
@@ -100,24 +114,24 @@
 
     input.correct{
       border-color:var(--ok);
-      box-shadow:0 0 0 2px rgba(29,185,84,0.18);
+      box-shadow:0 0 0 2px rgba(43,182,115,0.25);
     }
     input.wrong{
       border-color:var(--err);
-      box-shadow:0 0 0 2px rgba(231,76,60,0.16);
+      box-shadow:0 0 0 2px rgba(226,92,92,0.25);
     }
     input:disabled{
-      background:#263126;
+      background:#243a33;
       border-color:var(--ok);
-      font-weight:800;
+      font-weight:900;
     }
 
     .hint{
       margin-top:1rem;
-      padding:.8rem .95rem;
+      padding:.85rem 1rem;
       border:1px solid var(--line);
-      border-radius:12px;
-      background:#252525;
+      border-radius:14px;
+      background:#222c33;
       color:var(--muted);
     }
 
@@ -127,7 +141,7 @@
       padding:1rem;
       border:1px solid var(--line);
       border-radius:var(--radius);
-      background:#252525;
+      background:#222c33;
     }
     .submit-row{
       display:flex;
@@ -140,13 +154,13 @@
       display:inline-flex;
       align-items:center;
       gap:.5rem;
-      padding:.45rem .75rem;
+      padding:.5rem .85rem;
       border-radius:999px;
       border:1px solid var(--line);
-      background:#1f1f1f;
-      font-weight:800;
+      background:#1b2329;
+      font-weight:900;
     }
-    .score-pill b{ color:var(--accent); }
+    .score-pill b{ color:var(--accent-soft); }
 
     .actions{
       display:flex;
@@ -157,25 +171,26 @@
 
     .btn{
       background:var(--accent);
-      color:#111;
+      color:#082018;
       border:none;
-      border-radius:10px;
-      padding:.65rem 1.1rem;
+      border-radius:12px;
+      padding:.7rem 1.15rem;
       cursor:pointer;
       font-size:1rem;
-      font-weight:800;
+      font-weight:900;
       transition:transform .15s ease, filter .2s ease;
     }
     .btn:hover{ transform:translateY(-1px); filter:brightness(1.05); }
 
     .btn-ghost{
       background:transparent;
-      color:var(--accent);
-      border:1px solid var(--accent);
+      color:var(--accent-soft);
+      border:1px solid rgba(98,212,155,0.65);
     }
     .btn-ghost:hover{
-      background:var(--accent);
-      color:#111;
+      background:rgba(43,182,115,0.18);
+      color:#fff;
+      border-color:rgba(98,212,155,0.85);
     }
 
     .notice{
@@ -195,52 +210,51 @@
     .key-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
-      gap:.35rem 1rem;
-      margin-top:.5rem;
+      gap:.5rem 1rem;
+      margin-top:.6rem;
       font-size:.98rem;
     }
 
-    /* ===== Bottom Navigation (branded) ===== */
+    /* ===== Bottom Navigation (green) ===== */
     .bottom-nav{
       position:fixed;
       bottom:0; left:0; right:0;
-      background:var(--card);
+      background:#263038;
       border-top:1px solid var(--line);
       display:flex;
       justify-content:space-around;
       align-items:center;
       padding:0.7rem 0.5rem;
-      box-shadow:0 -2px 10px rgba(0,0,0,0.25);
+      box-shadow:0 -2px 12px rgba(0,0,0,0.25);
       z-index:1000;
     }
 
     .bottom-nav a{
-      color:var(--accent);
+      color:var(--accent-soft);
       text-decoration:none;
-      font-weight:800;
+      font-weight:900;
       font-size:0.98rem;
       padding:0.55rem 0.8rem;
-      border-radius:10px;
+      border-radius:12px;
       transition:background-color .2s ease, color .2s ease, transform .15s ease;
       text-align:center;
       flex:1;
       margin:0 4px;
-      border:1px solid rgba(255,122,26,0.25);
+      border:1px solid rgba(98,212,155,0.35);
     }
     .bottom-nav a:hover{
-      background:var(--accent);
-      color:#111;
+      background:rgba(43,182,115,0.22);
+      color:#fff;
       transform:translateY(-1px);
     }
 
-    /* ===== Responsive ===== */
+    /* ===== Mobile ===== */
     @media (max-width:600px){
       input[type="text"]{
-        display:inline-block;
+        display:block;
         width:100%;
         max-width:100%;
-        margin:0.4rem 0;
-        text-transform: uppercase;
+        margin:.45rem 0;
       }
       .bottom-nav a{ font-size:0.9rem; padding:0.5rem; }
     }
@@ -255,13 +269,17 @@
 <body>
 
 <header>
-  <h1>CAE – Reading and Use of English</h1>
+  <div class="header-inner">
+    <div class="brand">Modern English Australia</div>
+    <h1>CAE – Reading and Use of English</h1>
+  </div>
 </header>
 
 <div class="container">
-  <h2>Part 2</h2>
-  <p class="lead"><strong>For questions 9–12</strong>, read the text below and think of the word which best fits each gap. Use <strong>only one word</strong> in each gap.</p>
-  <p class="lead"><em>Write your answers IN CAPITAL LETTERS on the separate answer sheet.</em></p>
+  <h2>Part 2 · Open Cloze</h2>
+
+  <p class="lead"><strong>Questions 9–12</strong> — think of the word which best fits each gap. Use <strong>only one word</strong> in each gap.</p>
+  <p class="lead"><em>Write your answers in CAPITAL LETTERS.</em></p>
 
   <h3>Social Media and Children</h3>
 
@@ -281,7 +299,6 @@
 
   <div class="hint"><strong>Hint:</strong> for, as, from, to, of etc</div>
 
-  <!-- ===== Submit / Score / Reveal ===== -->
   <section class="submit-block" aria-label="Submit answers and score">
     <div class="submit-row">
       <div class="score-pill">
@@ -303,13 +320,12 @@
       <strong>Answer key</strong>
       <div class="key-grid" id="keyGrid"></div>
       <div class="notice" style="margin-top:0.6rem;">
-        The key also includes the explanation you had in your original version.
+        The key includes an explanation for each answer.
       </div>
     </div>
   </section>
 </div>
 
-<!-- Bottom Navigation Bar -->
 <nav class="bottom-nav">
   <a href="index.html">Home</a>
   <a href="part1.html">Part 1</a>
@@ -319,10 +335,9 @@
 </nav>
 
 <script>
-  // Correct answers + explanations
   const answersPart2 = {
     q9:  { word: "FOR",  explanation: "‘Opportunities for…’ is the correct preposition with ‘opportunity’." },
-    q10: { word: "AS",   explanation: "‘Risks such as…’ introduces examples: cyberbullying, privacy breaches." },
+    q10: { word: "AS",   explanation: "‘Such as…’ introduces examples." },
     q11: { word: "FROM", explanation: "Correct collocation: ‘protect someone from’ danger." },
     q12: { word: "TO",   explanation: "‘Allow someone to do something’ requires ‘to’." }
   };
@@ -336,9 +351,7 @@
   const answerKey = document.getElementById("answerKey");
   const keyGrid = document.getElementById("keyGrid");
 
-  function norm(s){
-    return (s || "").trim().toUpperCase();
-  }
+  function norm(s){ return (s || "").trim().toUpperCase(); }
 
   function buildKey(){
     keyGrid.innerHTML = "";
@@ -350,9 +363,7 @@
     });
   }
 
-  function allAnswered(){
-    return inputs.every(inp => norm(inp.value) !== "");
-  }
+  function allAnswered(){ return inputs.every(inp => norm(inp.value) !== ""); }
 
   function grade(){
     if (!allAnswered()){
@@ -380,12 +391,9 @@
     });
 
     scoreText.textContent = `${score} / ${inputs.length}`;
-
-    if (score === inputs.length){
-      noticeText.textContent = "Perfect score. Nice work.";
-    } else {
-      noticeText.textContent = "Correct answers are locked. Fix the red ones and submit again.";
-    }
+    noticeText.textContent = (score === inputs.length)
+      ? "Perfect score. Nice work."
+      : "Correct answers are locked. Fix the red ones and submit again.";
   }
 
   submitBtn.addEventListener("click", grade);
