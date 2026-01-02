@@ -7,16 +7,21 @@
 
   <style>
     :root{
-      --bg:#1e1e1e;
-      --card:#2a2a2a;
-      --ink:#f5f5f5;
-      --muted:#bbbbbb;
-      --accent:#ff7a1a;
-      --line:#3a3a3a;
+      /* ===== PURPLE THEME (matches cover Part 3 button) ===== */
+      --bg:#1f1b26;
+      --card:#2a2334;
+      --ink:#f6f4fb;
+      --muted:#c8bed9;
+
+      --accent:#7c4dff;       /* primary purple */
+      --accent-soft:#b59bff;  /* hover / highlight */
+
+      --line:#3a2f4a;
       --radius:16px;
-      --shadow:0 6px 24px rgba(0,0,0,.25);
-      --ok:#1db954;
-      --err:#e74c3c;
+      --shadow:0 10px 30px rgba(0,0,0,.30);
+
+      --ok:#2bb673;
+      --err:#e25c5c;
     }
 
     *{ box-sizing:border-box; }
@@ -27,35 +32,44 @@
       background:var(--bg);
       color:var(--ink);
       margin:0;
-      padding-bottom:80px; /* space for nav */
+      padding-bottom:84px; /* space for nav */
       line-height:1.75;
       display:flex;
       flex-direction:column;
       min-height:100vh;
     }
 
-    /* ===== Header (branded) ===== */
+    /* ===== Header (purple branded) ===== */
     header{
-      position:sticky; top:0; z-index:10;
-      background:var(--card);
+      position:sticky; top:0; z-index:20;
+      background:linear-gradient(135deg,#2b2440,#5a35c9);
       border-bottom:1px solid var(--line);
-      padding:.9rem 1rem;
     }
-    header h1{
+    .header-inner{
       max-width:1100px;
       margin:0 auto;
-      font-size:clamp(1rem,3.2vw,1.25rem);
-      font-weight:800;
-      letter-spacing:.2px;
-      text-transform:uppercase;
-      color:var(--accent);
+      padding:.9rem 1rem 1.05rem;
       text-align:center;
+    }
+    .brand{
+      font-size:.75rem;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      opacity:.85;
+    }
+    header h1{
+      margin:.35rem 0 0;
+      font-size:clamp(1rem,3.2vw,1.25rem);
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#fff;
     }
 
     /* ===== Wrapper / Card ===== */
     .wrapper{
       width:min(92%, 900px);
-      margin: clamp(18px, 4vw, 32px) auto;
+      margin: clamp(16px, 4vw, 32px) auto;
       background:var(--card);
       border:1px solid var(--line);
       border-radius:var(--radius);
@@ -65,7 +79,7 @@
 
     h2{
       margin:0 0 .6rem 0;
-      color:var(--accent);
+      color:var(--accent-soft);
       font-size:clamp(1.2rem,3.5vw,1.55rem);
       text-align:center;
     }
@@ -77,11 +91,11 @@
     }
 
     strong{
-      color:var(--accent);
+      color:var(--accent-soft);
       text-decoration:underline;
       text-underline-offset:3px;
       text-decoration-thickness:2px;
-      font-weight:800;
+      font-weight:900;
     }
 
     /* ===== Example ===== */
@@ -89,11 +103,11 @@
       margin: 12px 0 18px;
       padding: 12px;
       border:1px solid var(--line);
-      border-radius:12px;
-      background:#252525;
+      border-radius:14px;
+      background:#241d2f;
       text-align:center;
       color:var(--muted);
-      font-weight:700;
+      font-weight:800;
     }
     .example-box{
       display:flex;
@@ -108,15 +122,15 @@
       text-transform:uppercase;
       text-align:center;
       border:1px solid var(--line);
-      border-radius:8px;
+      border-radius:10px;
       padding:6px 0;
-      background:#333;
+      background:#332a42;
       color:var(--ink);
     }
 
     /* ===== Text Block ===== */
     .text-block{
-      background:#252525;
+      background:#241d2f;
       padding: 18px;
       border-radius: 14px;
       border:1px solid var(--line);
@@ -126,14 +140,14 @@
 
     /* ===== Inputs ===== */
     .gap-input{
-      background:#333;
+      background:#332a42;
       color:var(--ink);
       border:1px solid var(--line);
-      border-radius:8px;
-      padding:0.4rem 0.55rem;
+      border-radius:10px;
+      padding:0.5rem 0.65rem;
       font:inherit;
-      width: 160px;
-      max-width: 65vw;
+      width: 170px;
+      max-width: 70vw;
       margin:0 6px;
       vertical-align:baseline;
       text-transform: uppercase;
@@ -141,22 +155,22 @@
     }
     .gap-input.correct{
       border-color:var(--ok);
-      box-shadow:0 0 0 2px rgba(29,185,84,0.18);
+      box-shadow:0 0 0 2px rgba(43,182,115,0.22);
     }
     .gap-input.wrong{
       border-color:var(--err);
-      box-shadow:0 0 0 2px rgba(231,76,60,0.16);
+      box-shadow:0 0 0 2px rgba(226,92,92,0.22);
     }
     .gap-input:disabled{
-      background:#263126;
+      background:#243a33;
       border-color:var(--ok);
-      font-weight:800;
+      font-weight:900;
     }
 
     /* ===== Words list ===== */
     .words-list{
       margin-top: 14px;
-      background:#252525;
+      background:#241d2f;
       padding: 12px 14px;
       border-radius: 14px;
       border:1px solid var(--line);
@@ -164,13 +178,13 @@
       flex-wrap:wrap;
       gap:10px;
       justify-content:center;
-      font-weight:800;
+      font-weight:900;
       color:var(--muted);
     }
     .word-item{
-      background:#303030;
-      border:1px solid rgba(255,122,26,0.25);
-      padding: 6px 10px;
+      background:#2f2640;
+      border:1px solid rgba(181,155,255,0.35);
+      padding: 6px 12px;
       border-radius: 999px;
       user-select:none;
       color:var(--ink);
@@ -182,7 +196,7 @@
       padding:1rem;
       border:1px solid var(--line);
       border-radius:var(--radius);
-      background:#252525;
+      background:#241d2f;
     }
     .submit-row{
       display:flex;
@@ -195,13 +209,13 @@
       display:inline-flex;
       align-items:center;
       gap:.5rem;
-      padding:.45rem .75rem;
+      padding:.5rem .85rem;
       border-radius:999px;
       border:1px solid var(--line);
-      background:#1f1f1f;
-      font-weight:800;
+      background:#1b1623;
+      font-weight:900;
     }
-    .score-pill b{ color:var(--accent); }
+    .score-pill b{ color:var(--accent-soft); }
 
     .actions{
       display:flex;
@@ -212,25 +226,26 @@
 
     .btn{
       background:var(--accent);
-      color:#111;
+      color:#130a22;
       border:none;
-      border-radius:10px;
-      padding:.65rem 1.1rem;
+      border-radius:12px;
+      padding:.7rem 1.15rem;
       cursor:pointer;
       font-size:1rem;
-      font-weight:800;
+      font-weight:900;
       transition:transform .15s ease, filter .2s ease;
     }
-    .btn:hover{ transform:translateY(-1px); filter:brightness(1.05); }
+    .btn:hover{ transform:translateY(-1px); filter:brightness(1.06); }
 
     .btn-ghost{
       background:transparent;
-      color:var(--accent);
-      border:1px solid var(--accent);
+      color:var(--accent-soft);
+      border:1px solid rgba(181,155,255,0.65);
     }
     .btn-ghost:hover{
-      background:var(--accent);
-      color:#111;
+      background:rgba(124,77,255,0.18);
+      color:#fff;
+      border-color:rgba(181,155,255,0.9);
     }
 
     .notice{
@@ -250,52 +265,53 @@
     .key-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-      gap:.35rem 1rem;
-      margin-top:.5rem;
+      gap:.5rem 1rem;
+      margin-top:.6rem;
       font-size:.98rem;
     }
 
-    /* ===== Bottom Navigation (branded) ===== */
+    /* ===== Bottom Navigation (purple) ===== */
     .bottom-nav{
       position:fixed;
       bottom:0; left:0; right:0;
-      background:var(--card);
+      background:#2a2334;
       border-top:1px solid var(--line);
       display:flex;
       justify-content:space-around;
       align-items:center;
       padding:0.7rem 0.5rem;
-      box-shadow:0 -2px 10px rgba(0,0,0,0.25);
+      box-shadow:0 -2px 12px rgba(0,0,0,0.25);
       z-index:1000;
     }
     .bottom-nav a{
-      color:var(--accent);
+      color:var(--accent-soft);
       text-decoration:none;
-      font-weight:800;
+      font-weight:900;
       font-size:0.98rem;
       padding:0.55rem 0.8rem;
-      border-radius:10px;
+      border-radius:12px;
       transition:background-color .2s ease, color .2s ease, transform .15s ease;
       text-align:center;
       flex:1;
       margin:0 4px;
-      border:1px solid rgba(255,122,26,0.25);
+      border:1px solid rgba(181,155,255,0.35);
     }
     .bottom-nav a:hover{
-      background:var(--accent);
-      color:#111;
+      background:rgba(124,77,255,0.22);
+      color:#fff;
       transform:translateY(-1px);
     }
 
-    /* ===== Responsive ===== */
+    /* ===== Mobile ===== */
     @media (max-width:600px){
       .gap-input{
         display:block;
         width:100%;
         max-width:100%;
-        margin:0.4rem 0;
+        margin:.45rem 0;
       }
       .bottom-nav a{ font-size:0.9rem; padding:0.5rem; }
+      .text-block{ padding:16px; }
     }
 
     @media print{
@@ -308,18 +324,21 @@
 <body>
 
 <header>
-  <h1>Modern English Australia – CAE Test 3</h1>
+  <div class="header-inner">
+    <div class="brand">Modern English Australia</div>
+    <h1>CAE Test 3 – Reading & Use of English</h1>
+  </div>
 </header>
 
 <div class="wrapper">
-  <h2>Part 3</h2>
+  <h2>Part 3 · Word Formation</h2>
 
   <p class="instructions">
     For questions <strong>13–16</strong>, read the text below. Use the word given in capitals at the end of some lines to form a word that fits the gap in the same line. There is an example at the beginning (0).
   </p>
 
-  <p class="instructions" style="font-weight:600;">
-    Write your answers <strong>IN CAPITAL LETTERS</strong> on the separate answer sheet.
+  <p class="instructions" style="font-weight:700;">
+    Write your answers <strong>IN CAPITAL LETTERS</strong>.
   </p>
 
   <div class="example">
@@ -363,7 +382,6 @@
     <div class="word-item">PURSUE</div>
   </div>
 
-  <!-- ===== Submit / Score / Reveal ===== -->
   <section class="submit-block" aria-label="Submit answers and score">
     <div class="submit-row">
       <div class="score-pill">Score: <b id="scoreText">—</b></div>
@@ -389,7 +407,6 @@
   </section>
 </div>
 
-<!-- Bottom Navigation Bar -->
 <nav class="bottom-nav">
   <a href="index.html">Home</a>
   <a href="part1.html">Part 1</a>
@@ -399,7 +416,6 @@
 </nav>
 
 <script>
-  // Correct answers + explanations
   const answersPart3 = {
     gap13: { word: "DISTINCTIVE", explanation: "From DISTINCT → ‘one of the most distinctive’ = easily recognisable." },
     gap14: { word: "PROGRESSIVELY", explanation: "From PROGRESS → ‘progressively longer’ = gradually, step by step." },
@@ -461,11 +477,9 @@
 
     scoreText.textContent = `${score} / ${inputs.length}`;
 
-    if (score === inputs.length){
-      noticeText.textContent = "Perfect score. Nice work.";
-    } else {
-      noticeText.textContent = "Correct answers are locked. Fix the red ones and submit again.";
-    }
+    noticeText.textContent = (score === inputs.length)
+      ? "Perfect score. Nice work."
+      : "Correct answers are locked. Fix the red ones and submit again.";
   }
 
   submitBtn.addEventListener("click", grade);
@@ -491,4 +505,3 @@
 
 </body>
 </html>
-
