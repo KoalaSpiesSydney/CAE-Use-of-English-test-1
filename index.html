@@ -7,114 +7,119 @@
 
   <style>
     :root{
-      --ink:#243238;
-      --slate:#36454F;
-      --teal:#3f6f73;
-      --mist:#f2f5f6;
-      --card:#ffffff;
+      /* Match the other dark test pages */
+      --bg:#1e1e1e;
+      --card:#2a2a2a;
+      --ink:#f5f5f5;
+      --muted:#bbbbbb;
+      --line:#3a3a3a;
       --accent:#ff7a1a;
-      --shadow:0 10px 30px rgba(0,0,0,.12);
-      --radius:14px;
+
+      --shadow:0 10px 30px rgba(0,0,0,.28);
+      --radius:16px;
+
+      /* Cover button colours (same set you’ve been using) */
+      --p1a:#4a6fa5; --p1b:#3f5f8a; /* blue */
+      --p2a:#3f8f7d; --p2b:#2f6f60; /* green */
+      --p3a:#8a6fa5; --p3b:#6a4f8a; /* purple */
+      --p4a:#a56f4a; --p4b:#8a5530; /* brown */
     }
 
     *{ box-sizing:border-box; }
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  color:var(--ink);
-  background: #1a1a1a; /* charcoal background */
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-}
+    html,body{ height:100%; margin:0; }
 
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
     }
 
-    /* ===== Header ===== */
+    /* ===== Header (same structure as other pages) ===== */
     header{
-      background: linear-gradient(135deg, var(--slate), var(--teal));
-      color:#fff;
-      padding: 18px 16px 22px;
+      position:sticky; top:0; z-index:20;
+      background: linear-gradient(180deg, rgba(42,42,42,.98), rgba(42,42,42,.92));
+      border-bottom:1px solid var(--line);
+      backdrop-filter:saturate(140%) blur(6px);
+    }
+
+    .header-inner{
+      max-width:1100px;
+      margin:0 auto;
+      padding: 0.95rem 1rem;
       text-align:center;
       position:relative;
     }
 
-    header::after{
-      content:"";
-      position:absolute;
-      left:0; right:0; bottom:0;
-      height:6px;
-      background:linear-gradient(90deg, var(--accent), #ffb46a);
-    }
-
-    .brand{
-      font-size: clamp(0.75rem, 3vw, 0.9rem);
-      letter-spacing: 0.25em;
-      font-weight: 700;
-      opacity: 0.9;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    header h1{
-      margin:0;
-      font-size: clamp(1.15rem, 4.4vw, 1.7rem);
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-
-    header a{
-      color:#fff;
-      text-decoration:none;
-    }
-
-    /* Home icon */
     .home-link{
       position:absolute;
       top: max(12px, env(safe-area-inset-top));
-      left: max(12px, env(safe-area-inset-left));
-      font-size: 1.05rem;
-      background: rgba(255,255,255,0.18);
-      border:1px solid rgba(255,255,255,0.22);
-      padding:12px;
+      left:max(12px, env(safe-area-inset-left));
+      text-decoration:none;
+      color: var(--accent);
+      border:1px solid rgba(255,122,26,0.28);
+      background: rgba(255,122,26,0.08);
       border-radius:12px;
-      backdrop-filter: blur(6px);
       min-width:44px;
       min-height:44px;
       display:flex;
       align-items:center;
       justify-content:center;
-      transition: background .2s ease, transform .2s ease;
+      transition: transform .15s ease, background .2s ease, color .2s ease;
     }
-
     .home-link:hover{
-      background: rgba(255,255,255,0.34);
+      background: var(--accent);
+      color:#111;
       transform: translateY(-1px);
     }
 
-    /* ===== Main ===== */
-    main{
-      flex:1;
+    .brand{
+      font-weight:900;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color: var(--accent);
+      font-size: clamp(0.82rem, 2.8vw, 1rem);
+      margin-bottom: .35rem;
     }
 
+    header h1{
+      margin:0;
+      font-size: clamp(1.05rem, 4.2vw, 1.55rem);
+      font-weight:900;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      line-height:1.15;
+    }
+
+    header h1 a{
+      color: var(--ink);
+      text-decoration:none;
+    }
+
+    /* ===== Main ===== */
+    main{ flex:1; }
+
     .main-content{
-      width:min(92%, 720px);
-      margin: clamp(16px, 5vw, 44px) auto;
+      width:min(92%, 860px);
+      margin: clamp(14px, 4vw, 28px) auto;
       background: var(--card);
-      padding: clamp(18px, 5vw, 40px);
-      box-shadow: var(--shadow);
+      border:1px solid var(--line);
       border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(18px, 4.5vw, 34px);
       text-align:center;
     }
 
     .main-content h2{
-      margin: 0 0 18px;
-      font-weight: 700;
-      color: var(--slate);
-      font-size: clamp(1.05rem, 3.6vw, 1.3rem);
+      margin:0 0 18px;
+      font-weight:800;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 3.6vw, 1.25rem);
+      letter-spacing:.02em;
     }
 
-    /* ===== Buttons ===== */
     .nav-grid{
       display:grid;
       grid-template-columns: 1fr;
@@ -128,50 +133,69 @@ body{
       padding: 14px 16px;
       color:#fff;
       text-decoration:none;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,.18);
-      min-height:56px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 22px rgba(0,0,0,.25);
+      min-height:60px;
       text-align:left;
-      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+      transition: transform .18s ease, filter .2s ease, box-shadow .2s ease;
+    }
+    .nav-button:hover{
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+      box-shadow: 0 14px 30px rgba(0,0,0,.33);
     }
 
     .nav-button .title{
-      font-weight: 800;
+      font-weight:900;
+      letter-spacing:.02em;
+      font-size: 1.05rem;
     }
-
     .nav-button .desc{
       font-size: .92rem;
-      opacity:.9;
+      opacity:.92;
+      color: rgba(255,255,255,0.92);
     }
 
-    .p1{ background: linear-gradient(135deg, #4a6fa5, #3f5f8a); }
-    .p2{ background: linear-gradient(135deg, #3f8f7d, #2f6f60); }
-    .p3{ background: linear-gradient(135deg, #8a6fa5, #6a4f8a); }
-    .p4{ background: linear-gradient(135deg, #a56f4a, #8a5530); }
+    /* Button colour lanes */
+    .p1{ background: linear-gradient(135deg, var(--p1a), var(--p1b)); }
+    .p2{ background: linear-gradient(135deg, var(--p2a), var(--p2b)); }
+    .p3{ background: linear-gradient(135deg, var(--p3a), var(--p3b)); }
+    .p4{ background: linear-gradient(135deg, var(--p4a), var(--p4b)); }
 
-    .nav-button:hover{
-      transform: translateY(-2px);
-      filter: brightness(1.04);
-      box-shadow: 0 10px 26px rgba(0,0,0,.22);
-    }
-
-    /* ===== Footer ===== */
+    /* ===== Footer (dark, like other pages) ===== */
     footer{
+      border-top:1px solid var(--line);
+      background: var(--card);
       text-align:center;
       padding: 14px 12px;
-      font-size: 0.85rem;
-      color: #666;
+      color: var(--muted);
+      font-size: 0.9rem;
     }
-
-    footer span{
-      font-weight:600;
-    }
+    footer span{ font-weight:800; color: var(--ink); }
 
     /* ===== Larger screens ===== */
-    @media (min-width:700px){
+    @media (min-width:720px){
       .nav-grid{
         grid-template-columns: 1fr 1fr;
       }
+      .nav-button{
+        min-height:72px;
+        padding: 16px 18px;
+      }
+    }
+
+    /* ===== Mobile fine-tuning ===== */
+    @media (max-width:420px){
+      .main-content{ padding: 18px 16px; }
+      .nav-button .title{ font-size: 1rem; }
+      .nav-button .desc{ font-size: .9rem; }
+    }
+
+    @media print{
+      header, footer{ display:none; }
+      body{ background:#fff; color:#000; }
+      .main-content{ box-shadow:none; border:1px solid #ccc; background:#fff; }
     }
   </style>
 </head>
@@ -179,18 +203,18 @@ body{
 <body>
 
 <header>
-  <a href="https://ieltspteaustralianexaminertutor.com/" class="home-link" aria-label="Home">🏠</a>
+  <div class="header-inner">
+    <a href="https://ieltspteaustralianexaminertutor.com/" class="home-link" aria-label="Home">🏠</a>
 
-  <div class="brand">MODERN ENGLISH AUSTRALIA</div>
-  <h1>
-    <a href="https://ieltspteaustralianexaminertutor.com/">
-      Use of Language
-    </a>
-  </h1>
+    <div class="brand">MODERN ENGLISH AUSTRALIA</div>
+    <h1>
+      <a href="https://ieltspteaustralianexaminertutor.com/">Use of Language</a>
+    </h1>
+  </div>
 </header>
 
 <main>
-  <section class="main-content">
+  <section class="main-content" aria-label="Choose a part">
     <h2>Choose a Part</h2>
 
     <div class="nav-grid">
@@ -223,5 +247,3 @@ body{
 
 </body>
 </html>
-
-
