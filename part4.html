@@ -7,17 +7,21 @@
 
   <style>
     :root{
-      /* Match your cover pages + branded test pages */
-      --bg:#1e1e1e;
-      --card:#2a2a2a;
-      --ink:#f5f5f5;
-      --muted:#bbbbbb;
-      --accent:#ff7a1a;
-      --line:#3a3a3a;
+      /* ===== BROWN THEME (matches cover Part 4 button) ===== */
+      --bg:#1f1a16;
+      --card:#2a221c;
+      --ink:#f6f2ee;
+      --muted:#cbbfb4;
+
+      --accent:#a56f4a;        /* brown */
+      --accent-soft:#d2a37d;   /* warm highlight */
+      --line:#3a2f28;
+
       --radius:16px;
-      --shadow:0 8px 28px rgba(0,0,0,.28);
-      --ok:#1db954;
-      --err:#e74c3c;
+      --shadow:0 10px 30px rgba(0,0,0,.32);
+
+      --ok:#2bb673;
+      --err:#e25c5c;
     }
 
     *{ box-sizing:border-box; }
@@ -34,29 +38,32 @@
       padding-bottom:86px; /* room for fixed bottom nav */
     }
 
-    /* ===== Topbar (cover-page aligned) ===== */
+    /* ===== Header (brown gradient) ===== */
     header{
       position:sticky; top:0; z-index:20;
-      background:linear-gradient(180deg, rgba(42,42,42,.98), rgba(42,42,42,.92));
+      background:linear-gradient(135deg,#2a221c,#8a5530);
       border-bottom:1px solid var(--line);
-      backdrop-filter:saturate(140%) blur(6px);
     }
-    .topbar{
+    .header-inner{
       max-width:1100px;
       margin:0 auto;
-      padding:0.9rem 1rem;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      padding:.9rem 1rem 1.05rem;
       text-align:center;
     }
     .brand{
-      font-weight:900;
-      letter-spacing:.18em;
+      font-size:.75rem;
+      letter-spacing:.28em;
       text-transform:uppercase;
-      color:var(--accent);
-      font-size:clamp(0.95rem,3.2vw,1.15rem);
-      line-height:1.2;
+      opacity:.9;
+      color:#fff;
+    }
+    header h1{
+      margin:.35rem 0 0;
+      font-size:clamp(1rem,3.2vw,1.25rem);
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#fff;
     }
 
     /* ===== Main card ===== */
@@ -73,7 +80,7 @@
     h2{
       margin:0 0 .35rem 0;
       text-align:center;
-      color:var(--accent);
+      color:var(--accent-soft);
       font-size:clamp(1.2rem,3.8vw,1.65rem);
       letter-spacing:.02em;
     }
@@ -82,7 +89,7 @@
       text-align:center;
       color:var(--muted);
       margin:0 0 1rem 0;
-      font-weight:600;
+      font-weight:700;
       font-size:clamp(.95rem,2.7vw,1.02rem);
     }
 
@@ -93,7 +100,7 @@
     }
 
     strong{
-      color:var(--accent);
+      color:var(--accent-soft);
       text-decoration:underline;
       text-underline-offset:3px;
       text-decoration-thickness:2px;
@@ -103,7 +110,7 @@
     /* ===== Question blocks ===== */
     .question-block{
       margin-top:12px;
-      background:#252525;
+      background:#241d18;
       border:1px solid var(--line);
       border-radius:14px;
       padding:14px 14px;
@@ -120,18 +127,18 @@
 
     .question-number{
       font-weight:900;
-      color:var(--accent);
+      color:var(--accent-soft);
       letter-spacing:.06em;
     }
 
     .word-given{
       font-weight:900;
       letter-spacing:.14em;
-      color:var(--accent);
+      color:var(--accent-soft);
       text-transform:uppercase;
       font-size:.92rem;
-      border:1px solid rgba(255,122,26,.28);
-      background:#2b2b2b;
+      border:1px solid rgba(210,163,125,.38);
+      background:#2f261f;
       padding:.25rem .55rem;
       border-radius:999px;
       white-space:nowrap;
@@ -151,41 +158,38 @@
       font-size: 1rem;
       border:1px solid var(--line);
       border-radius:12px;
-      background:#333;
+      background:#332820;
       color:var(--ink);
       outline:none;
       text-transform: lowercase;
       min-height:44px; /* mobile tap target */
     }
-    .answer-input::placeholder{ color:#8e8e8e; }
+    .answer-input::placeholder{ color:#9b8b80; }
 
     .answer-input.correct{
       border-color:var(--ok);
-      box-shadow:0 0 0 2px rgba(29,185,84,0.18);
-      background:#263126;
-      font-weight:800;
+      box-shadow:0 0 0 2px rgba(43,182,115,0.22);
+      background:#243a33;
+      font-weight:900;
     }
     .answer-input.wrong{
       border-color:var(--err);
-      box-shadow:0 0 0 2px rgba(231,76,60,0.16);
+      box-shadow:0 0 0 2px rgba(226,92,92,0.22);
     }
-
-    .answer-input:disabled{
-      cursor:not-allowed;
-    }
+    .answer-input:disabled{ cursor:not-allowed; }
 
     /* ===== Example ===== */
     .example{
-      background:#232323;
+      background:#201915;
       border-left:5px solid var(--accent);
       padding-left:12px;
     }
     .example .answer-input{
       text-transform:none;
       font-weight:900;
-      color:var(--accent);
-      background:#2f2f2f;
-      border-color:rgba(255,122,26,0.35);
+      color:var(--accent-soft);
+      background:#2a211b;
+      border-color:rgba(210,163,125,0.45);
     }
 
     /* ===== Submit / Score / Reveal ===== */
@@ -194,7 +198,7 @@
       padding:1rem;
       border:1px solid var(--line);
       border-radius:var(--radius);
-      background:#252525;
+      background:#241d18;
     }
 
     .submit-row{
@@ -212,11 +216,11 @@
       padding:.5rem .85rem;
       border-radius:999px;
       border:1px solid var(--line);
-      background:#1f1f1f;
+      background:#1a1410;
       font-weight:900;
       min-height:44px;
     }
-    .score-pill b{ color:var(--accent); }
+    .score-pill b{ color:var(--accent-soft); }
 
     .actions{
       display:flex;
@@ -228,7 +232,7 @@
 
     .btn{
       background:var(--accent);
-      color:#111;
+      color:#140d08;
       border:none;
       border-radius:12px;
       padding:.75rem 1.1rem;
@@ -236,16 +240,20 @@
       font-size:1rem;
       font-weight:900;
       transition:transform .15s ease, filter .2s ease;
-      min-height:44px; /* mobile tap target */
+      min-height:44px;
     }
-    .btn:hover{ transform:translateY(-1px); filter:brightness(1.05); }
+    .btn:hover{ transform:translateY(-1px); filter:brightness(1.06); }
 
     .btn-ghost{
       background:transparent;
-      color:var(--accent);
-      border:1px solid var(--accent);
+      color:var(--accent-soft);
+      border:1px solid rgba(210,163,125,0.75);
     }
-    .btn-ghost:hover{ background:var(--accent); color:#111; }
+    .btn-ghost:hover{
+      background:rgba(165,111,74,0.22);
+      color:#fff;
+      border-color:rgba(210,163,125,0.95);
+    }
 
     .notice{
       margin-top:.8rem;
@@ -268,13 +276,13 @@
       margin-top:.6rem;
       font-size:.98rem;
     }
-    .key-grid strong{ text-decoration:none; }
+    .key-grid strong{ text-decoration:none; color:var(--accent-soft); }
 
-    /* ===== Bottom Navigation (cover-page aligned) ===== */
+    /* ===== Bottom Navigation (brown) ===== */
     .bottom-nav{
       position:fixed;
       bottom:0; left:0; right:0;
-      background:linear-gradient(180deg, rgba(42,42,42,.98), rgba(42,42,42,.92));
+      background:#2a221c;
       border-top:1px solid var(--line);
       display:flex;
       justify-content:space-around;
@@ -282,11 +290,10 @@
       padding:0.7rem 0.5rem;
       box-shadow:0 -2px 12px rgba(0,0,0,0.35);
       z-index:1000;
-      backdrop-filter:saturate(140%) blur(6px);
     }
 
     .bottom-nav a{
-      color:var(--accent);
+      color:var(--accent-soft);
       text-decoration:none;
       font-weight:900;
       font-size:0.98rem;
@@ -296,7 +303,7 @@
       text-align:center;
       flex:1;
       margin:0 4px;
-      border:1px solid rgba(255,122,26,0.22);
+      border:1px solid rgba(210,163,125,0.35);
       min-height:44px;
       display:flex;
       align-items:center;
@@ -305,14 +312,14 @@
       white-space:nowrap;
     }
     .bottom-nav a:hover{
-      background:var(--accent);
-      color:#111;
+      background:rgba(165,111,74,0.28);
+      color:#fff;
       transform:translateY(-1px);
     }
 
-    /* ===== Mobile-first adjustments ===== */
+    /* ===== Mobile-first ===== */
     @media (max-width:600px){
-      .wrapper{ width:min(94%, 920px); margin: 12px auto; }
+      .wrapper{ margin: 12px auto; }
       .question-block{ padding:12px 12px; }
       .bottom-nav{ padding:0.55rem 0.45rem; }
       .bottom-nav a{ font-size:0.9rem; padding:0.55rem 0.5rem; }
@@ -320,12 +327,6 @@
       .actions{ width:100%; justify-content:space-between; }
       .btn{ flex:1; }
       .btn-ghost{ flex:1; }
-    }
-
-    /* ===== Larger screens ===== */
-    @media (min-width:900px){
-      .question-block{ padding:16px 16px; }
-      .submit-block{ padding:1.15rem; }
     }
 
     @media print{
@@ -341,14 +342,15 @@
 <body>
 
 <header>
-  <div class="topbar">
+  <div class="header-inner">
     <div class="brand">Modern English Australia</div>
+    <h1>CAE Test 3 – Reading & Use of English</h1>
   </div>
 </header>
 
 <main class="wrapper">
-  <h2>CAE Use of English</h2>
-  <p class="sub">Part 4 · Key Word Transformations</p>
+  <h2>Part 4 · Key Word Transformations</h2>
+  <p class="sub">Sentence Transformations</p>
 
   <p class="instructions">
     For questions <strong>17–20</strong>, complete the second sentence so that it has a similar meaning to the first sentence,
@@ -420,7 +422,6 @@
     </div>
   </section>
 
-  <!-- ===== Submit / Score / Reveal ===== -->
   <section class="submit-block" aria-label="Submit answers and score">
     <div class="submit-row">
       <div class="score-pill">Score: <b id="scoreText">—</b></div>
@@ -446,7 +447,6 @@
   </section>
 </main>
 
-<!-- Bottom Navigation Bar -->
 <nav class="bottom-nav" aria-label="Bottom navigation">
   <a href="index.html">Home</a>
   <a href="part1.html">Part 1</a>
@@ -456,7 +456,6 @@
 </nav>
 
 <script>
-  // Acceptable answers + explanations
   const answersPart4 = {
     q17: {
       words: ["may be postponed"],
@@ -541,11 +540,9 @@
 
     scoreText.textContent = `${score} / ${inputs.length}`;
 
-    if (score === inputs.length){
-      noticeText.textContent = "Perfect score. Nice work.";
-    } else {
-      noticeText.textContent = "Correct answers are locked. Fix the red ones and submit again.";
-    }
+    noticeText.textContent = (score === inputs.length)
+      ? "Perfect score. Nice work."
+      : "Correct answers are locked. Fix the red ones and submit again.";
   }
 
   submitBtn.addEventListener("click", grade);
