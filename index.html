@@ -3,80 +3,139 @@
 <head>
   <meta charset="UTF-8" />
   <title>Use of Language – CAE Practice</title>
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      color: #333;
+    :root{
+      --ink:#243238;
+      --slate:#36454F;
+      --teal:#3f6f73;
+      --mist:#f2f5f6;
+      --card:#ffffff;
+      --accent:#ff7a1a;
+      --shadow:0 10px 30px rgba(0,0,0,.12);
+      --radius:14px;
     }
 
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        linear-gradient(180deg, #eef2f3 0%, #f7f8f9 100%);
+      color: var(--ink);
+    }
+
+    /* ===== Header ===== */
     header {
-      background-color: ##36454F;
+      background:
+        linear-gradient(135deg, var(--slate), var(--teal));
       color: white;
-      padding: 20px;
+      padding: 32px 20px 36px;
       text-align: center;
-      position: relative; /* allows us to place icon absolutely */
+      position: relative;
+    }
+
+    header::after{
+      content:"";
+      position:absolute;
+      left:0; right:0; bottom:0;
+      height:6px;
+      background:linear-gradient(
+        90deg,
+        var(--accent),
+        #ffb46a
+      );
     }
 
     header h1 {
       margin: 0;
-      font-size: 1.6em;
+      font-size: 1.8em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
-    /* Home icon link */
+    /* Home icon */
     .home-link {
       position: absolute;
-      top: 15px;
-      left: 15px;
+      top: 18px;
+      left: 18px;
       text-decoration: none;
-      font-size: 1.4em;
+      font-size: 1.3em;
       color: white;
-      background: #625D5D;
+      background: rgba(255,255,255,0.18);
       padding: 6px 10px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
+      border-radius: 8px;
+      backdrop-filter: blur(6px);
+      transition: background 0.25s ease, transform 0.25s ease;
     }
 
     .home-link:hover {
-      background-color: #0055a5;
+      background: rgba(255,255,255,0.35);
+      transform: translateY(-1px);
     }
 
+    /* ===== Main card ===== */
     .main-content {
-      max-width: 600px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      max-width: 620px;
+      margin: 60px auto;
+      background: var(--card);
+      padding: 40px 36px;
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
       text-align: center;
     }
 
     .main-content h2 {
-      margin-bottom: 30px;
+      margin: 0 0 30px;
+      font-weight: 600;
+      color: var(--slate);
+      letter-spacing: .5px;
     }
 
+    /* ===== Buttons ===== */
     .nav-button {
       display: block;
-      width: 200px;
-      margin: 15px auto;
-      padding: 12px;
-      background-color: c;
+      width: 240px;
+      margin: 14px auto;
+      padding: 14px 18px;
       color: white;
       text-decoration: none;
-      font-size: 1.1em;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
+      font-size: 1.05em;
+      border-radius: 10px;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,.18);
     }
 
+    /* Subtle variation per part */
+    .p1{ background: linear-gradient(135deg, #4a6fa5, #3f5f8a); }
+    .p2{ background: linear-gradient(135deg, #3f8f7d, #2f6f60); }
+    .p3{ background: linear-gradient(135deg, #8a6fa5, #6a4f8a); }
+    .p4{ background: linear-gradient(135deg, #a56f4a, #8a5530); }
+
     .nav-button:hover {
-      background-color: #0055a5;
+      transform: translateY(-3px);
+      filter: brightness(1.05);
+      box-shadow: 0 10px 26px rgba(0,0,0,.25);
+    }
+
+    /* ===== Mobile ===== */
+    @media (max-width: 600px){
+      .main-content{
+        margin: 40px 16px;
+        padding: 32px 24px;
+      }
+
+      .nav-button{
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <!-- Home icon link -->
   <a href="https://ieltspteaustralianexaminertutor.com/" class="home-link">🏠</a>
   <h1>Use of Language</h1>
 </header>
@@ -84,10 +143,10 @@
 <div class="main-content">
   <h2>Choose a Part</h2>
 
-  <a href="part1.html" class="nav-button">Part 1 –</a>
-  <a href="part2.html" class="nav-button">Part 2 –</a>
-  <a href="part3.html" class="nav-button">Part 3 –</a>
-  <a href="part4.html" class="nav-button">Part 4 –</a>
+  <a href="part1.html" class="nav-button p1">Part 1 – Multiple-Choice Cloze</a>
+  <a href="part2.html" class="nav-button p2">Part 2 – Open Cloze</a>
+  <a href="part3.html" class="nav-button p3">Part 3 – Word Formation</a>
+  <a href="part4.html" class="nav-button p4">Part 4 – Key Word Transformations</a>
 </div>
 
 </body>
