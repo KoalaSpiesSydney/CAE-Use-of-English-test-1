@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Use of Language – CAE Practice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 
   <style>
     :root{
@@ -29,13 +31,19 @@
     html,body{ height:100%; margin:0; }
 
     body{
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    
+  font-weight: 400;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background: var(--bg);
       color: var(--ink);
       min-height:100vh;
       display:flex;
       flex-direction:column;
+
     }
+
+
+
 
     /* ===== Header (same structure as other pages) ===== */
     header{
@@ -120,11 +128,14 @@
       letter-spacing:.02em;
     }
 
-    .nav-grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
+ .nav-grid{
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 700px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
 
     .nav-button{
       display:flex;
@@ -238,6 +249,8 @@
         <div class="desc">Key Word Transformations</div>
       </a>
     </div>
+
+    <a href="index.html" class="back-link">← Back</a>
   </section>
 </main>
 
@@ -247,3 +260,6 @@
 
 </body>
 </html>
+
+
+
